@@ -1,10 +1,18 @@
 # Sprint Quiz
 
-Aplicación Front-End de juego de preguntas y respuestas.
+Aplicación Front-End con React. Juego de preguntas y respuestas con competitivo local.
 
 ## Preview
 
-[Figma preview](https://www.figma.com/file/DApPVR9kjFESTeJABJbV3h/Sprint-9)
+#### Diseño Mobil
+
+![Mobile Design](./src/design/mobile-design.png)
+<br>
+
+#### Diseño Escritorio
+
+![Desktop Design](./src/design/desktop-design.png)
+<br>
 
 ## Tecnologias
 
