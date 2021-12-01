@@ -1,0 +1,78 @@
+.start {
+  position: relative;
+  height: 100vh;
+  background: var(--bg-gradient);
+  /* overflow: hidden; */
+}
+
+.start__title {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 162px;
+  padding-top: 170px;
+  font-size: 86.74px;
+  font-weight: 700;
+  line-height: 101.64px;
+  color: var(--black);
+  text-shadow: -5px -5px 0 var(--purple), 5px -5px 0 var(--purple),
+    -5px 5px 0 var(--purple), 5px 5px 0 var(--purple);
+  z-index: 10;
+}
+
+.start__container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 34.2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-white);
+  border-radius: 50px 50px 0 0;
+}
+
+.start__button {
+  padding: 15.21px 45.63px;
+  color: var(--dark-white);
+  background-color: var(--purple);
+  border: none;
+  border-radius: 15px;
+  font-size: 36.5px;
+  line-height: 43px;
+}
+
+.icon {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+}
+
+.icon__world {
+  top: 67px;
+  left: 67px;
+}
+
+.icon__video {
+  top: 153px;
+  left: 277px;
+}
+
+.icon__monalisa {
+  top: 207px;
+  left: 131px;
+}
+
+.icon__scroll {
+  top: 312px;
+  left: 213px;
+}
+
+.icon__running {
+  top: 364px;
+  left: 50px;
+}
+
+.icon__plant {
+  top: 437px;
+  left: 260px;
+}

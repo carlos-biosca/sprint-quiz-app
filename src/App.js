@@ -1,9 +1,10 @@
 import './App.css';
+import Start from './pages/Start/Start';
 
 function App () {
   return (
     <div className="App">
-      <h1>Sprint Quiz</h1>
+      <Start />
     </div>
   );
 }
