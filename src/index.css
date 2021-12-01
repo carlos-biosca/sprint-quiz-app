@@ -1,7 +1,9 @@
 :root {
+  --white: #fff;
   --dark-white: #fafafa;
   --black: #06080a;
   --purple: #5b518a;
+  --sports: #ffbc41;
 
   --bg-gradient: linear-gradient(90deg, #5b518a, #9f95c1);
 }
@@ -11,7 +13,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   max-width: 425px;
   font-family: "Roboto", sans-serif;
 }
@@ -19,4 +21,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button {
+  border: none;
 }

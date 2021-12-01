@@ -1,6 +1,7 @@
 .start {
   position: relative;
   height: 100vh;
+  /* width: 100vw; */
   background: var(--bg-gradient);
   /* overflow: hidden; */
 }
@@ -20,8 +21,9 @@
 }
 
 .start__container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
+  max-width: 425px;
   width: 100%;
   height: 34.2%;
   display: flex;
@@ -29,13 +31,13 @@
   align-items: center;
   background-color: var(--dark-white);
   border-radius: 50px 50px 0 0;
+  z-index: 10;
 }
 
 .start__button {
   padding: 15.21px 45.63px;
   color: var(--dark-white);
   background-color: var(--purple);
-  border: none;
   border-radius: 15px;
   font-size: 36.5px;
   line-height: 43px;
@@ -54,7 +56,7 @@
 
 .icon__video {
   top: 153px;
-  left: 277px;
+  right: 30px;
 }
 
 .icon__monalisa {
@@ -74,5 +76,5 @@
 
 .icon__plant {
   top: 437px;
-  left: 260px;
+  right: 50px;
 }
