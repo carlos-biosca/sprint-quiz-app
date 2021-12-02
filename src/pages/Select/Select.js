@@ -6,6 +6,8 @@ import SelectOptions from '../../components/SelectOptions';
 import { difficultyLevels, players } from '../../data';
 
 export default function Select () {
+  const [numberOfPlayers, setNumberOfPlayers] = useState('1 player')
+  const [level, setLevel] = useState('normal')
 
   //functions
   const handleInfo = () => {
@@ -22,12 +24,12 @@ export default function Select () {
 
         <div className="select__form-group">
           <p className="select__label">Select difficulty</p>
-          <SelectOptions data={difficultyLevels} initial={{ option: 'normal', position: 1 }} />
+          <SelectOptions data={difficultyLevels} initial={1} changeOption={setLevel} initialOption={level} />
         </div>
 
         <div className="select__form-group">
           <p className="select__label">Select players</p>
-          <SelectOptions data={players} initial={{ option: '1 player', position: 0 }} />
+          <SelectOptions data={players} initial={0} changeOption={setNumberOfPlayers} initialOption={numberOfPlayers} />
         </div>
 
         <div className="select__form-group select__form-group--players">

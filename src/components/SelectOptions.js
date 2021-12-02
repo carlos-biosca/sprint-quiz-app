@@ -2,10 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 
 import './SelectOptions.css'
 
-export default function SelectOptions ({ data, initial }) {
+export default function SelectOptions ({ data, initial, changeOption, initialOption }) {
   const options = useRef(null)
-  const [current, setCurrent] = useState(initial.position)
-  const [option, setOption] = useState(initial.option)
+  const [current, setCurrent] = useState(initial)
 
   const handlePrev = () => {
     setCurrent(current => current === 0 ? data.length - 1 : current - 1)
@@ -16,18 +15,18 @@ export default function SelectOptions ({ data, initial }) {
   }
 
   useEffect(() => {
-    setOption(options.current.children[current].textContent)
-  }, [current]);
+    changeOption(options.current.children[current].textContent)
+  }, [current, changeOption]);
 
   return (
     <div className="select__input">
       <button className="select__left-arrow" onClick={handlePrev}></button>
       <div className="select__box" ref={options}>
         {
-          data.map((level, index) => {
+          data.map((option, index) => {
             return (
-              <span key={index} className={level === option ? 'select__option select__option--show' : 'select__option'}>
-                {level}
+              <span key={index} className={option === initialOption ? 'select__option select__option--show' : 'select__option'}>
+                {option}
               </span>
             )
           })
