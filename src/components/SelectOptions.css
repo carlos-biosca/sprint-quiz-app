@@ -1,0 +1,39 @@
+.select__input {
+  display: flex;
+  justify-content: space-between;
+  width: 242px;
+  height: 36px;
+  border: 2px solid var(--black);
+}
+
+.select__left-arrow,
+.select__right-arrow {
+  width: 32px;
+  background-color: var(--white);
+}
+
+.select__left-arrow {
+  background-image: url(../assets/icons/left-chevron.png);
+}
+
+.select__right-arrow {
+  background-image: url(../assets/icons/chevron.png);
+}
+
+.select__box {
+  position: relative;
+  width: 100%;
+}
+
+.select__option {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  padding-top: 0.4em;
+  opacity: 0;
+}
+
+.select__option--show {
+  opacity: 1;
+}
