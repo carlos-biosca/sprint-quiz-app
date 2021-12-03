@@ -7,6 +7,8 @@ import scroll from '../../assets/icons/scroll.png'
 import running from '../../assets/icons/running.png'
 import plant from '../../assets/icons/plant-based.png'
 
+import Button from '../../components/Button/Button'
+
 export default function Start () {
 
   const handleStart = () => {
@@ -17,7 +19,7 @@ export default function Start () {
     <div className="start">
       <h1 className="start__title">Sprint Quiz</h1>
       <div className="start__container">
-        <button className="start__button" onClick={handleStart}>Start</button>
+        <Button labelAria='start game' classes='button' action={handleStart} text='Start' />
       </div>
       <img src={world} alt="" className="icon icon__world" />
       <img src={video} alt="" className="icon icon__video" />

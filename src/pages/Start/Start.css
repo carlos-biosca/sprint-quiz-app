@@ -34,15 +34,6 @@
   z-index: 10;
 }
 
-.start__button {
-  padding: 15.21px 45.63px;
-  color: var(--dark-white);
-  background-color: var(--purple);
-  border-radius: 15px;
-  font-size: 36.5px;
-  line-height: 43px;
-}
-
 .icon {
   position: absolute;
   width: 64px;

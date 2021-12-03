@@ -40,6 +40,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 305px;
+  padding-bottom: 2em;
   z-index: 20;
 }
 
@@ -57,7 +58,6 @@
 
 .select__form-group--players {
   height: auto;
-  padding: 1em;
 }
 
 .select__label {
@@ -67,10 +67,6 @@
   font-size: 18px;
   font-weight: bold;
   line-height: 21px;
-}
-
-.select__label--players {
-  margin-top: 11px;
 }
 
 .select__player {

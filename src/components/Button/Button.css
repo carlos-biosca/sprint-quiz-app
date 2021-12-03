@@ -1,0 +1,15 @@
+.button {
+  padding: 15.21px 45.63px;
+  color: var(--dark-white);
+  background-color: var(--purple);
+  border-radius: 15px;
+  font-size: 36.5px;
+  line-height: 43px;
+}
+
+.button--play {
+  padding: 10px 30px;
+  font-size: 24px;
+  line-height: 28px;
+  border-radius: 10px;
+}

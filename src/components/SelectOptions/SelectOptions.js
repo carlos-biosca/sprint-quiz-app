@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 
 import './SelectOptions.css'
 
-export default function SelectOptions ({ data, initial, changeOption, initialOption }) {
+export default function SelectOptions ({ data, initialCounter, changeOption, currentOption }) {
   const options = useRef(null)
-  const [current, setCurrent] = useState(initial)
+  const [current, setCurrent] = useState(initialCounter)
 
   const handlePrev = () => {
     setCurrent(current => current === 0 ? data.length - 1 : current - 1)
@@ -25,7 +25,7 @@ export default function SelectOptions ({ data, initial, changeOption, initialOpt
         {
           data.map((option, index) => {
             return (
-              <span key={index} className={option === initialOption ? 'select__option select__option--show' : 'select__option'}>
+              <span key={index} className={option === currentOption ? 'select__option select__option--show' : 'select__option'}>
                 {option}
               </span>
             )

@@ -1,17 +1,33 @@
 import { useState, useEffect, useRef } from 'react';
 import './Select.css'
 
-import SelectOptions from '../../components/SelectOptions';
+import SelectOptions from '../../components/SelectOptions/SelectOptions';
 
 import { difficultyLevels, players } from '../../data';
+import Button from '../../components/Button/Button';
 
 export default function Select () {
   const [numberOfPlayers, setNumberOfPlayers] = useState('1 player')
   const [level, setLevel] = useState('normal')
+  const [playersName, setPlayersName] = useState({
+    player1: '',
+    player2: '',
+    player3: '',
+    player4: ''
+  })
+  const [gameInfo, setGameInfo] = useState({})
 
-  //functions
   const handleInfo = () => {
     console.log('info');
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setPlayersName({ ...playersName, [name]: value })
+  }
+
+  const handleSubmit = () => {
+    console.log('play');
   }
 
   return (
@@ -24,22 +40,22 @@ export default function Select () {
 
         <div className="select__form-group">
           <p className="select__label">Select difficulty</p>
-          <SelectOptions data={difficultyLevels} initial={1} changeOption={setLevel} initialOption={level} />
+          <SelectOptions data={difficultyLevels} initialCounter={1} changeOption={setLevel} currentOption={level} />
         </div>
 
         <div className="select__form-group">
           <p className="select__label">Select players</p>
-          <SelectOptions data={players} initial={0} changeOption={setNumberOfPlayers} initialOption={numberOfPlayers} />
+          <SelectOptions data={players} initialCounter={0} changeOption={setNumberOfPlayers} currentOption={numberOfPlayers} />
         </div>
 
         <div className="select__form-group select__form-group--players">
           <p className="select__label select__label--players">Enter your name</p>
-          <input type="text" className='select__player' placeholder="PLAYER 1 NAME" />
-          <input type="text" className='select__player' placeholder="PLAYER 2 NAME" />
-          <input type="text" className='select__player' placeholder="PLAYER 3 NAME" />
-          <input type="text" className='select__player' placeholder="PLAYER 4 NAME" />
+          <input type="text" name="player1" className='select__player' placeholder="PLAYER 1 NAME" value={playersName.player1} onChange={handleChange} />
+          <input type="text" name="player2" className='select__player' placeholder="PLAYER 2 NAME" value={playersName.player2} onChange={handleChange} />
+          <input type="text" name="player3" className='select__player' placeholder="PLAYER 3 NAME" value={playersName.player3} onChange={handleChange} />
+          <input type="text" name="player4" className='select__player' placeholder="PLAYER 4 NAME" value={playersName.player4} onChange={handleChange} />
         </div>
-
+        <Button labelAria='start game' classes='button button--play' action={handleSubmit} text='Play' />
       </div>
     </div>
   )
