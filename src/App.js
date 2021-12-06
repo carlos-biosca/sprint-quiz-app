@@ -4,6 +4,8 @@ import './App.css';
 import Select from './pages/Select/Select';
 import Start from './pages/Start/Start';
 
+import { ProviderGame } from './context/gameContext'
+
 function App () {
   const [starting, setStarting] = useState(false)
 
@@ -13,8 +15,10 @@ function App () {
 
   return (
     <div className="App">
-      <Start move={starting} start={handleStart} />
-      <Select move={starting} start={handleStart} />
+      <ProviderGame>
+        <Start move={starting} start={handleStart} />
+        <Select move={starting} start={handleStart} />
+      </ProviderGame>
     </div>
   );
 }
