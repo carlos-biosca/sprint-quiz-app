@@ -1,9 +1,13 @@
 .start {
   position: relative;
   height: 100vh;
-  /* width: 100vw; */
   background: var(--bg-gradient);
-  /* overflow: hidden; */
+  transition: transform 0.35s linear;
+}
+
+.start.move-left {
+  transform: translateX(-100%);
+  transition: transform 0.35s linear;
 }
 
 .start__title {

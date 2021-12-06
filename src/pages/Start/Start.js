@@ -9,17 +9,12 @@ import plant from '../../assets/icons/plant-based.png'
 
 import Button from '../../components/Button/Button'
 
-export default function Start () {
-
-  const handleStart = () => {
-    console.log('start');
-  }
-
+export default function Start ({ move, start }) {
   return (
-    <div className="start">
+    <div className={!move ? 'start' : 'start move-left'}>
       <h1 className="start__title">Sprint Quiz</h1>
       <div className="start__container">
-        <Button labelAria='start game' classes='button' action={handleStart} text='Start' />
+        <Button labelAria='start game' classes='button' action={start} text='Start' />
       </div>
       <img src={world} alt="" className="icon icon__world" />
       <img src={video} alt="" className="icon icon__video" />

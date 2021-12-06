@@ -1,5 +1,7 @@
 .App {
+  position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
 @keyframes App-logo-spin {
