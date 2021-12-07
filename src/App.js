@@ -28,8 +28,8 @@ function App () {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Start move={starting} start={handleStart} />
-              <Select move={starting} start={handleStart} />
+              <Start start={starting} move={handleStart} />
+              <Select start={starting} move={handleStart} />
             </Route>
             <ProtectedRoute path="/game">
               <Game />

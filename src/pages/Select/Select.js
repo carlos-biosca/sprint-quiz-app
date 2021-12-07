@@ -17,10 +17,10 @@ export default function Select ({ move, start }) {
   }
 
   return (
-    <div className={!move ? 'select' : 'select move-left'}>
+    <div className={!start ? 'select' : 'select move-left'}>
       <div className="select__header">
         <h2 className="select__title">Let's play</h2>
-        <div className="select__back" onClick={start}></div>
+        <div className="select__back" onClick={move}></div>
         <div className="select__info" onClick={handleInfo}></div>
       </div>
       <div className="select__form">
