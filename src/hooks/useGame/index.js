@@ -26,6 +26,7 @@ export default function useProviderGame () {
 
   const handleSubmit = () => {
     setGameIsReady(true)
+    console.log('play');
   }
 
   return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleSubmit }

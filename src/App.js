@@ -1,10 +1,19 @@
 import { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
 import './App.css';
 
 import Select from './pages/Select/Select';
 import Start from './pages/Start/Start';
+import Game from './pages/Game/Game'
 
-import { ProviderGame } from './context/gameContext'
+import { ProviderGame } from './contexts/gameContext'
+
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App () {
   const [starting, setStarting] = useState(false)
@@ -16,8 +25,17 @@ function App () {
   return (
     <div className="App">
       <ProviderGame>
-        <Start move={starting} start={handleStart} />
-        <Select move={starting} start={handleStart} />
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Start move={starting} start={handleStart} />
+              <Select move={starting} start={handleStart} />
+            </Route>
+            <ProtectedRoute path="/game">
+              <Game />
+            </ProtectedRoute>
+          </Switch>
+        </Router>
       </ProviderGame>
     </div>
   );

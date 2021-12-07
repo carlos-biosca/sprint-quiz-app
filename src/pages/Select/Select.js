@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './Select.css'
 
 import SelectOptions from '../../components/SelectOptions/SelectOptions';
@@ -5,7 +7,7 @@ import Button from '../../components/Button/Button';
 
 import { difficultyLevels, players } from '../../data';
 
-import { useGame } from '../../context/gameContext';
+import { useGame } from '../../contexts/gameContext';
 
 export default function Select ({ move, start }) {
   const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleSubmit } = useGame()
@@ -46,7 +48,9 @@ export default function Select ({ move, start }) {
             numberOfPlayers > 3 && <input type="text" name="player4" className='select__player' placeholder="PLAYER 4 NAME" value={playersName[3]} onChange={handleChangeName} />
           }
         </div>
-        <Button labelAria='start game' classes='button button--play' action={handleSubmit} text='Play' />
+        <Link to="/game">
+          <Button labelAria='start game' classes='button button--play' action={handleSubmit} text='Play' />
+        </Link>
       </div>
     </div>
   )
