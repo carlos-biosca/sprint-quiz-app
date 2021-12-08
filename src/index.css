@@ -4,6 +4,7 @@
   --white: #fff;
   --dark-white: #fafafa;
   --black: #06080a;
+  --dark-grey: #555b52;
   --purple: #5b518a;
   --sports: #ffbc41;
 
@@ -27,6 +28,7 @@ code {
 
 button {
   border: none;
+  font-family: "Roboto", sans-serif;
 }
 
 input[type="text"] {
