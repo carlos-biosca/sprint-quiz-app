@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import './Game.css'
 
+import { world, video, monalisa, scroll, running, plant } from '../../data'
+
 import { useGame } from '../../contexts/gameContext'
 
 export default function Game () {
@@ -31,7 +33,7 @@ export default function Game () {
       <div className="game__container">
         <div className="game__tabs">
           <button
-            className={toggleState === 1 ? "game__tab game__tab--active" : "game__tab"}
+            className={toggleState === 1 ? "game__tab game__tab--turn game__tab--active" : "game__tab game__tab--turn"}
             onClick={() => toggleTab(1)}
           >
             Carlos
@@ -59,13 +61,26 @@ export default function Game () {
           <div
             className={toggleState === 1 ? "game__record  game__record--active" : "game__record"}
           >
-            <h2>Content 1</h2>
-          </div>
-
-          <div
-            className={toggleState === 2 ? "game__record  game__record--active" : "game__record"}
-          >
-            <h2>Content 2</h2>
+            <div className="game__pieces">
+              <div className="game__piece game__piece--entertainment">
+                <img src={video} alt="Entertainment" />
+              </div>
+              <div className="game__piece game__piece--history">
+                <img src={scroll} alt="History" />
+              </div>
+              <div className="game__piece game__piece--geography">
+                <img src={world} alt="Geography" />
+              </div>
+              <div className="game__piece">
+                <img src={plant} alt="Nature & Science" />
+              </div>
+              <div className="game__piece">
+                <img src={running} alt="sports" />
+              </div>
+              <div className="game__piece">
+                <img src={monalisa} alt="Art & Literature" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

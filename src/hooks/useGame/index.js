@@ -21,7 +21,7 @@ export default function useProviderGame () {
 
   const handleChangeName = (e) => {
     const { name, value } = e.target
-    setPlayersName({ ...playersName, [name]: value })
+    setPlayersName({ ...playersName, [name]: value.trim() })
   }
 
   const handleSubmit = () => {

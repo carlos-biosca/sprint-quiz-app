@@ -61,9 +61,60 @@
   color: var(--black);
 }
 
+.game__tab--turn {
+  color: var(--sports);
+}
+
 .game__name {
   display: inline-block;
   max-width: 90%;
   max-height: 75%;
   overflow: hidden;
+}
+
+.game__record {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: calc(100% - 55px);
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.game__record--active {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.game__pieces {
+  width: 84%;
+  height: 83%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.game__piece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-image: var(--slot-gradient);
+}
+
+.game__piece--entertainment {
+  background-image: var(--entertainment-gradient);
+  box-shadow: inset 0px 0px 10px var(--entertainment);
+}
+
+.game__piece--history {
+  background-image: var(--history-gradient);
+  box-shadow: inset 0px 0px 10px var(--history);
+}
+
+.game__piece--geography {
+  background-image: var(--geography-gradient);
+  box-shadow: inset 0px 0px 10px var(--geography);
 }
