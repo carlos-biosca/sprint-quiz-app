@@ -14,12 +14,13 @@ import Game from './pages/Game/Game'
 import { ProviderGame } from './contexts/gameContext'
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Question from './pages/Question/Question';
 
 function App () {
-  const [starting, setStarting] = useState(false)
+  const [screen, setScreen] = useState(false)
 
-  const handleStart = () => {
-    setStarting(starting => !starting)
+  const handleScreen = () => {
+    setScreen(screen => !screen)
   }
 
   return (
@@ -28,8 +29,8 @@ function App () {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Start start={starting} move={handleStart} />
-              <Select start={starting} move={handleStart} />
+              <Start screen={screen} move={handleScreen} />
+              <Select screen={screen} move={handleScreen} />
             </Route>
             <ProtectedRoute path="/game">
               <Game />

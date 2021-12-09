@@ -1,0 +1,19 @@
+.question {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  transform: translateX(100%);
+  background-color: var(--dark-white);
+  transition: transform 0.35s linear;
+}
+
+.question.move-left {
+  transform: translateX(0%);
+  transition: transform 0.35s linear;
+}
+
+.question h2 {
+  color: black;
+  margin: 0;
+}

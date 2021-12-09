@@ -1,5 +1,5 @@
 .game__records {
-  height: 100%;
+  height: calc(100% - 55px);
   background-color: var(--dark-white);
 }
 

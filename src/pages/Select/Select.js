@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Select.css'
@@ -6,18 +7,24 @@ import SelectOptions from '../../components/SelectOptions/SelectOptions';
 import Button from '../../components/Button/Button';
 
 import { difficultyLevels, players } from '../../data';
-
 import { useGame } from '../../contexts/gameContext';
 
-export default function Select ({ move, start }) {
+
+export default function Select ({ move, screen }) {
   const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleSubmit } = useGame()
+
+  useEffect(() => {
+    return () => {
+      move()
+    };
+  }, []);
 
   const handleInfo = () => {
     console.log('info');
   }
 
   return (
-    <div className={!start ? 'select' : 'select move-left'}>
+    <div className={!screen ? 'select' : 'select move-left'}>
       <div className="select__header">
         <h2 className="select__title">Let's play</h2>
         <div className="select__back" onClick={move}></div>
