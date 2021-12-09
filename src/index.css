@@ -10,26 +10,17 @@
   --entertainment: #e63c1e;
   --history: #f5ee30;
   --geography: #0ec5d6;
-  --nature: #76f877;
+  --nature: #60f11c;
   --art: #ff57f7;
 
   --bg-gradient: linear-gradient(90deg, #5b518a, #9f95c1);
   --slot-gradient: linear-gradient(151deg, #d9d9d9 4.16%, #ffffff 88.11%);
-  --entertainment-gradient: linear-gradient(
-    152.52deg,
-    #e63c1e 21.45%,
-    #ff7860 96.37%
-  );
-  --history-gradient: linear-gradient(
-    152.52deg,
-    #f5ee30 21.45%,
-    #fffb79 96.37%
-  );
-  --geography-gradient: linear-gradient(
-    152.52deg,
-    #0ec5d6 21.45%,
-    #51e8f7 96.37%
-  );
+  --entertainment-gradient: linear-gradient(152.52deg, #e63c1e 20%, #e63c1e96);
+  --history-gradient: linear-gradient(152.52deg, #f5ee30 20%, #fbf3055b);
+  --geography-gradient: linear-gradient(152.52deg, #0ec5d6 20%, #51e9f7a9);
+  --nature-gradient: linear-gradient(152.52deg, #60f11c 20%, #53f350a6);
+  --sports-gradient: linear-gradient(152.52deg, #ffbc41 20%, #f3d59e);
+  --art-gradient: linear-gradient(152.52deg, #ff57f7 20%, #f872f1a6);
 }
 
 * {

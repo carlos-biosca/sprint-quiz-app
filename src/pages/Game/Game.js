@@ -1,14 +1,42 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import './Game.css'
 
-import { world, video, monalisa, scroll, running, plant } from '../../data'
-
 import { useGame } from '../../contexts/gameContext'
+
+import PlayersTabs from '../../components/PlayersTabs/PlayersTabs'
+import PlayersPanels from '../../components/PlayersPanels/PlayersPanels'
 
 export default function Game () {
   const { level, numberOfPlayers, playersName, gameIsReady } = useGame()
-  const names = Object.values(playersName).slice(0, numberOfPlayers)
+  const [turn, setTurn] = useState(1)
+  const [playersCards, setPlayersCard] = useState(null)
+  const [toggleTab, setToggleTab] = useState(1);
+
+  useEffect(() => {
+    const generatePlayersCards = () => {
+      let cards = []
+      const names = Object.values(playersName).slice(0, numberOfPlayers)
+      for (let name of names) {
+        const card = {
+          name,
+          records: {
+            entertainment: false,
+            history: false,
+            geography: false,
+            nature: false,
+            sports: false,
+            art: false
+          }
+        }
+        cards.push(card)
+      }
+      setPlayersCard(cards)
+    }
+
+    generatePlayersCards()
+  }, [numberOfPlayers, playersName])
+
 
   const handleOptions = () => {
     console.log('options');
@@ -18,11 +46,8 @@ export default function Game () {
     console.log('info');
   }
 
-  //Tabs
-  const [toggleState, setToggleState] = useState(1);
-
-  const toggleTab = (index) => {
-    setToggleState(index);
+  const handleToggleTab = (index) => {
+    setToggleTab(index);
   };
 
   return (
@@ -31,58 +56,8 @@ export default function Game () {
       <div className="select__info game__info" onClick={handleInfo}></div>
       <div className="game__wheel"></div>
       <div className="game__container">
-        <div className="game__tabs">
-          <button
-            className={toggleState === 1 ? "game__tab game__tab--turn game__tab--active" : "game__tab game__tab--turn"}
-            onClick={() => toggleTab(1)}
-          >
-            Carlos
-          </button>
-          <button
-            className={toggleState === 2 ? "game__tab game__tab--active" : "game__tab"}
-            onClick={() => toggleTab(2)}
-          >
-            Albert
-          </button>
-          <button
-            className={toggleState === 3 ? "game__tab game__tab--active" : "game__tab"}
-            onClick={() => toggleTab(3)}
-          >
-            <span className="game__name">Maria del carmen de todos los santos</span>
-          </button>
-          <button
-            className={toggleState === 4 ? "game__tab game__tab--active" : "game__tab"}
-            onClick={() => toggleTab(4)}
-          >
-            <span className="game__name">Jonathan</span>
-          </button>
-        </div>
-        <div className="game__records">
-          <div
-            className={toggleState === 1 ? "game__record  game__record--active" : "game__record"}
-          >
-            <div className="game__pieces">
-              <div className="game__piece game__piece--entertainment">
-                <img src={video} alt="Entertainment" />
-              </div>
-              <div className="game__piece game__piece--history">
-                <img src={scroll} alt="History" />
-              </div>
-              <div className="game__piece game__piece--geography">
-                <img src={world} alt="Geography" />
-              </div>
-              <div className="game__piece">
-                <img src={plant} alt="Nature & Science" />
-              </div>
-              <div className="game__piece">
-                <img src={running} alt="sports" />
-              </div>
-              <div className="game__piece">
-                <img src={monalisa} alt="Art & Literature" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <PlayersTabs cards={playersCards} toggleTab={handleToggleTab} activeTab={toggleTab} />
+        <PlayersPanels cards={playersCards} activeTab={toggleTab} />
       </div>
     </div>
   )
