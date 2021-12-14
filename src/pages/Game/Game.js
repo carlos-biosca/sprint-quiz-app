@@ -7,6 +7,8 @@ import { useGame } from '../../contexts/gameContext'
 import PlayersContainer from '../../components/PlayersContainer/PlayersContainer'
 import Question from '../Question/Question'
 
+import generatePlayersRecords from '../../logic/generatePlayersRecords'
+
 export default function Game () {
   const { level, numberOfPlayers, playersName, gameIsReady } = useGame()
   const [screen, setScreen] = useState(false)
@@ -14,29 +16,9 @@ export default function Game () {
   const [turn, setTurn] = useState(1)
   const [question, setQuestion] = useState('')
 
-
   useEffect(() => {
-    const generatePlayersCards = () => {
-      let cards = []
-      const names = Object.values(playersName).slice(0, numberOfPlayers)
-      for (let name of names) {
-        const card = {
-          name,
-          records: {
-            entertainment: false,
-            history: false,
-            geography: false,
-            nature: false,
-            sports: false,
-            art: false
-          }
-        }
-        cards.push(card)
-      }
-      setPlayersCard(cards)
-    }
-    generatePlayersCards()
-  }, [numberOfPlayers, playersName])
+    generatePlayersRecords(playersName, numberOfPlayers, setPlayersCard)
+  }, [playersName, numberOfPlayers])
 
   const handleScreen = () => {
     setScreen(screen => !screen)
@@ -51,7 +33,7 @@ export default function Game () {
   }
 
   const randomQuestion = () => {
-    const themes = ['entertainment', 'history', 'geography', 'nature & science', 'sports', 'art & literature']
+    const themes = ['entertainment ', 'history ', 'geography ', 'nature & science', 'sports ', 'art & literature']
     const random = Math.floor(Math.random() * 6)
     setQuestion(themes[random])
     handleScreen()

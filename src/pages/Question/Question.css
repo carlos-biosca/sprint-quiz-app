@@ -9,55 +9,126 @@
   transform: translateX(100%);
   padding-bottom: 38px;
   background-color: var(--dark-white);
+  overflow-y: auto;
 }
-
-/* .question--geography {
-  background-image: var(--geography-gradient);
-}
-
-.question--entertainment {
-  background-image: var(--entertainment-gradient);
-}
-
-.question--sports {
-  background-image: var(--sports-gradient);
-} */
 
 .question__header {
   width: 100%;
   height: 125px;
-  background-color: var(--sports);
+  background-color: var(--dark-white);
 }
 
 .question__title {
-  margin-top: 70px;
-  margin-bottom: 13px;
-  font-size: 36px;
+  margin-top: 60px;
+  margin-bottom: 23px;
+  font-size: 32px;
   line-height: 42px;
   font-weight: bold;
   text-transform: uppercase;
   color: var(--white);
 }
 
+.question__title--geography {
+  color: var(--geography);
+}
+
+.question__title--entertainment {
+  color: var(--entertainment);
+}
+
+.question__title--sports {
+  color: var(--sports);
+}
+
+.question__title--art {
+  color: var(--art);
+}
+
+.question__title--nature {
+  color: var(--nature);
+}
+
+.question__title--history {
+  color: var(--history);
+}
+
 .question__text {
-  width: 319px;
-  padding-top: 1em;
+  width: 85%;
   margin-bottom: 26px;
   font-size: 24px;
   line-height: 28px;
   text-align: left;
 }
 
+.question__form {
+  width: 85%;
+}
+
 .question__form-group {
-  width: 319px;
+  display: flex;
   height: 76px;
-  padding: 24px 19px;
+  padding-left: 19px;
+  padding-right: 19px;
   background-color: var(--white);
   box-shadow: 0px 5px 15px 0px #00000040;
   border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.question__form-group:last-of-type {
+  margin-bottom: 50px;
 }
 
 .question__form-input {
-  transform: scale(2.1);
-  filter: grayscale(1);
+  display: none;
+}
+
+.question__form-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+}
+
+.question__form-label::before {
+  content: "";
+  width: 27px;
+  height: 27px;
+  margin-right: 14px;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+}
+
+.question__form-label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  width: 21px;
+  height: 21px;
+  background-color: var(--dark-white);
+  border-radius: 50%;
+}
+
+.question__form-group--checked {
+  background-color: var(--purple);
+}
+
+.question__form-group--checked > label {
+  color: var(--dark-white);
+}
+
+.question__form-group--checked > label::before {
+  border: 2px solid var(--dark-white);
+}
+
+.question__form-button {
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-radius: 5px;
+  font-size: 24px;
+  line-height: 28px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
 }

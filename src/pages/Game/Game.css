@@ -2,7 +2,6 @@
   position: relative;
   height: 100vh;
   background: var(--bg-gradient);
-  transition: transform 0.35s linear;
 }
 
 .game.move-left {

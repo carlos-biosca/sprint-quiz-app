@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Select.css'
@@ -12,12 +11,6 @@ import { useGame } from '../../contexts/gameContext';
 
 export default function Select ({ move, screen }) {
   const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleSubmit } = useGame()
-
-  useEffect(() => {
-    return () => {
-      move()
-    };
-  }, []);
 
   const handleInfo = () => {
     console.log('info');

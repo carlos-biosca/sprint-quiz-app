@@ -14,7 +14,6 @@ import Game from './pages/Game/Game'
 import { ProviderGame } from './contexts/gameContext'
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
-import Question from './pages/Question/Question';
 
 function App () {
   const [screen, setScreen] = useState(false)
