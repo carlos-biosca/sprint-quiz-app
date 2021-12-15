@@ -9,19 +9,15 @@ import { difficultyLevels, players } from '../../data';
 import { useGame } from '../../contexts/gameContext';
 
 
-export default function Select ({ move, screen }) {
+export default function Select ({ move, screen, openInfo }) {
   const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleSubmit } = useGame()
-
-  const handleInfo = () => {
-    console.log('info');
-  }
 
   return (
     <div className={!screen ? 'select' : 'select move-left'}>
       <div className="select__header">
         <h2 className="select__title">Let's play</h2>
         <div className="select__back" onClick={move}></div>
-        <div className="select__info" onClick={handleInfo}></div>
+        <div className="select__info" onClick={openInfo}></div>
       </div>
       <div className="select__form">
 

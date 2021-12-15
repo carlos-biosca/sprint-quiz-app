@@ -14,25 +14,43 @@ import Game from './pages/Game/Game'
 import { ProviderGame } from './contexts/gameContext'
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import OptionsModal from './components/OptionsModal/OptionsModal';
+import InfoModal from './components/InfoModal/InfoModal';
 
 function App () {
   const [screen, setScreen] = useState(false)
+  const [options, setOptions] = useState(false)
+  const [info, setInfo] = useState(false)
 
   const handleScreen = () => {
     setScreen(screen => !screen)
+  }
+
+  const handleToggleOptions = () => {
+    setOptions(options => !options)
+  }
+
+  const handleToggleInfo = () => {
+    setInfo(info => !info)
   }
 
   return (
     <div className="App">
       <ProviderGame>
         <Router>
+          {
+            options && <OptionsModal closeModal={handleToggleOptions} />
+          }
+          {
+            info && <InfoModal closeModal={handleToggleInfo} />
+          }
           <Switch>
             <Route exact path="/">
-              <Start screen={screen} move={handleScreen} />
-              <Select screen={screen} move={handleScreen} />
+              <Start screen={screen} move={handleScreen} openOptions={handleToggleOptions} />
+              <Select screen={screen} move={handleScreen} openInfo={handleToggleInfo} />
             </Route>
             <ProtectedRoute path="/game">
-              <Game />
+              <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} />
             </ProtectedRoute>
           </Switch>
         </Router>

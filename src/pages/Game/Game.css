@@ -9,15 +9,6 @@
   transition: transform 0.35s linear;
 }
 
-.game__options {
-  position: absolute;
-  top: 41px;
-  right: 32px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../../assets/icons/option.png);
-}
-
 .game__info {
   top: 101px;
   right: 28px;

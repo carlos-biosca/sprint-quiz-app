@@ -4,9 +4,10 @@ import { world, video, monalisa, scroll, running, plant } from '../../data'
 
 import Button from '../../components/Button/Button'
 
-export default function Start ({ move, screen }) {
+export default function Start ({ move, screen, openOptions }) {
   return (
     <div className={!screen ? 'start' : 'start move-left'}>
+      <div className="start__options" onClick={openOptions}></div>
       <h1 className="start__title">Sprint Quiz</h1>
       <div className="start__container">
         <Button labelAria='start game' classes='button' action={move} text='Start' />

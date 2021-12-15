@@ -5,6 +5,7 @@ import './Question.css'
 import { possibleOptions } from '../../data'
 
 import Button from '../../components/Button/Button'
+
 export default function Question ({ move, question }) {
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
@@ -24,7 +25,6 @@ export default function Question ({ move, question }) {
     }
   }
 
-
   return (
     <div className="question" ref={section}>
       <div className='question__header'>
@@ -35,8 +35,17 @@ export default function Question ({ move, question }) {
         {
           possibleOptions.map((option, index) => {
             return (
-              <label key={index} htmlFor={index} className={answer === option ? 'question__form-label question__form-label--checked' : 'question__form-label'}>
-                <input type="radio" name="answer" id={index} className='question__form-input' checked={answer === option} onChange={handleAnswerChange} value={option} />
+              <label
+                key={index}
+                htmlFor={index}
+                className={answer === option ? 'question__form-label question__form-label--checked' : 'question__form-label'}>
+                <input
+                  checked={answer === option}
+                  className='question__form-input'
+                  id={index}
+                  onChange={handleAnswerChange}
+                  type="radio"
+                  value={option} />
                 <p className='question__form-text'>{option}</p>
               </label>
             )

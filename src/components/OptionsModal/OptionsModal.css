@@ -1,0 +1,21 @@
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+}
+
+.modal-options {
+  background-image: var(--bg-gradient);
+}
+
+.game__options,
+.start__options {
+  position: absolute;
+  top: 41px;
+  right: 32px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../assets/icons/option.png);
+  z-index: 20;
+}

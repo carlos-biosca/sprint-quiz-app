@@ -8,8 +8,9 @@ import PlayersContainer from '../../components/PlayersContainer/PlayersContainer
 import Question from '../Question/Question'
 
 import generatePlayersRecords from '../../logic/generatePlayersRecords'
+import generateRandomQuestion from '../../logic/generateRandomQuestion'
 
-export default function Game () {
+export default function Game ({ openOptions, openInfo }) {
   const { level, numberOfPlayers, playersName, gameIsReady } = useGame()
   const [screen, setScreen] = useState(false)
   const [playersCards, setPlayersCard] = useState(null)
@@ -24,26 +25,11 @@ export default function Game () {
     setScreen(screen => !screen)
   }
 
-  const handleOptions = () => {
-    console.log('options');
-  }
-
-  const handleInfo = () => {
-    console.log('info');
-  }
-
-  const randomQuestion = () => {
-    const themes = ['entertainment ', 'history ', 'geography ', 'nature & science', 'sports ', 'art & literature']
-    const random = Math.floor(Math.random() * 6)
-    setQuestion(themes[random])
-    handleScreen()
-  }
-
   return (
     <div className={!screen ? 'game' : 'game move-left'}>
-      <div className="game__options" onClick={handleOptions}></div>
-      <div className="select__info game__info" onClick={handleInfo}></div>
-      <div className="game__wheel" onClick={randomQuestion}></div>
+      <div className="game__options" onClick={openOptions}></div>
+      <div className="select__info game__info" onClick={openInfo}></div>
+      <div className="game__wheel" onClick={() => generateRandomQuestion(setQuestion, handleScreen)}></div>
       <PlayersContainer cards={playersCards} />
       <Question move={handleScreen} question={question} />
     </div>
