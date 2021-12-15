@@ -6,7 +6,7 @@ import { possibleOptions } from '../../data'
 
 import Button from '../../components/Button/Button'
 export default function Question ({ move, question }) {
-  const [answer, setAnswer] = useState(null)
+  const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
 
   const handleAnswerChange = (e) => {
@@ -16,10 +16,10 @@ export default function Question ({ move, question }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('submit');
-    if (answer === null) return
+    if (answer === undefined) return
     else {
       section.current.scrollTo(0, 0)
-      setAnswer(null)
+      setAnswer(undefined)
       move()
     }
   }
@@ -35,10 +35,10 @@ export default function Question ({ move, question }) {
         {
           possibleOptions.map((option, index) => {
             return (
-              <div key={index} className={answer === option ? 'question__form-group question__form-group--checked' : 'question__form-group'}>
-                <input type="radio" name="answer" id={index} className='question__form-input' onChange={handleAnswerChange} value={option} />
-                <label htmlFor={index} className='question__form-label'>{option}</label>
-              </div>
+              <label key={index} htmlFor={index} className={answer === option ? 'question__form-label question__form-label--checked' : 'question__form-label'}>
+                <input type="radio" name="answer" id={index} className='question__form-input' checked={answer === option} onChange={handleAnswerChange} value={option} />
+                <p className='question__form-text'>{option}</p>
+              </label>
             )
           })
         }
