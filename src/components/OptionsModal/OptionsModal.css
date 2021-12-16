@@ -1,4 +1,7 @@
 .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -9,13 +12,20 @@
   background-image: var(--bg-gradient);
 }
 
-.game__options,
-.start__options {
-  position: absolute;
-  top: 41px;
-  right: 32px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../../assets/icons/option.png);
-  z-index: 20;
+.modal-options__close {
+  background-image: url(../../assets/icons/close.png);
+  background-size: cover;
+}
+
+.modal-options__title {
+  margin-top: 100px;
+  margin-bottom: 37px;
+  color: var(--white);
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 42px;
+}
+
+.modal-options__container {
+  width: 86.66%;
 }
