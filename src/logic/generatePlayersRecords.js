@@ -1,4 +1,4 @@
-const generatePlayersRecords = (playersName, numberOfPlayers, setPlayersCard) => {
+const generatePlayersRecords = (playersName, numberOfPlayers, setPlayersCards) => {
   let cards = []
   const names = Object.values(playersName).slice(0, numberOfPlayers)
   for (let name of names) {
@@ -15,7 +15,7 @@ const generatePlayersRecords = (playersName, numberOfPlayers, setPlayersCard) =>
     }
     cards.push(card)
   }
-  setPlayersCard(cards)
+  setPlayersCards(cards)
 }
 
 export default generatePlayersRecords

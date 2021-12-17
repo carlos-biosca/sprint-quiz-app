@@ -9,6 +9,7 @@ export default function useProviderGame () {
     player3: 'player 3',
     player4: 'player 4'
   })
+  const [playersCards, setPlayersCards] = useState(null)
   const [gameIsReady, setGameIsReady] = useState(false)
 
   const handleChangeLevel = (str) => {
@@ -24,10 +25,10 @@ export default function useProviderGame () {
     setPlayersName({ ...playersName, [name]: value.trim() })
   }
 
-  const handleSubmit = () => {
-    setGameIsReady(true)
-    console.log('play');
+  const handleGameIsReady = () => {
+    setGameIsReady(gameIsReady => !gameIsReady)
+    console.log('game');
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleSubmit }
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, setPlayersCards }
 }

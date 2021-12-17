@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,9 +22,9 @@ function App () {
   const [options, setOptions] = useState(false)
   const [info, setInfo] = useState(false)
 
-  const handleScreen = () => {
+  const handleScreen = useCallback(() => {
     setScreen(screen => !screen)
-  }
+  }, [])
 
   const handleToggleOptions = () => {
     setOptions(options => !options)

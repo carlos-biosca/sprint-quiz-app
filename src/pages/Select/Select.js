@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Select.css'
@@ -10,7 +11,13 @@ import { useGame } from '../../contexts/gameContext';
 
 
 export default function Select ({ move, screen, openInfo }) {
-  const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleSubmit } = useGame()
+  const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleGameIsReady } = useGame()
+
+  useEffect(() => {
+    return () => {
+      move()
+    }
+  }, [move])
 
   return (
     <div className={!screen ? 'select' : 'select move-left'}>
@@ -45,7 +52,7 @@ export default function Select ({ move, screen, openInfo }) {
           }
         </div>
         <Link to="/game">
-          <Button labelAria='start game' classes='button button--play' action={handleSubmit} text='Play' />
+          <Button labelAria='start game' classes='button button--play' action={handleGameIsReady} text='Play' />
         </Link>
       </div>
     </div>

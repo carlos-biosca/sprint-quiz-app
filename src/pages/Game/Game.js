@@ -11,15 +11,14 @@ import generatePlayersRecords from '../../logic/generatePlayersRecords'
 import generateRandomQuestion from '../../logic/generateRandomQuestion'
 
 export default function Game ({ openOptions, openInfo }) {
-  const { level, numberOfPlayers, playersName, gameIsReady } = useGame()
+  const { level, numberOfPlayers, playersName, playersCards, setPlayersCards } = useGame()
   const [screen, setScreen] = useState(false)
-  const [playersCards, setPlayersCard] = useState(null)
   const [turn, setTurn] = useState(1)
   const [question, setQuestion] = useState('')
 
   useEffect(() => {
-    generatePlayersRecords(playersName, numberOfPlayers, setPlayersCard)
-  }, [playersName, numberOfPlayers])
+    generatePlayersRecords(playersName, numberOfPlayers, setPlayersCards)
+  }, [playersName, numberOfPlayers, setPlayersCards])
 
   const handleScreen = () => {
     setScreen(screen => !screen)
