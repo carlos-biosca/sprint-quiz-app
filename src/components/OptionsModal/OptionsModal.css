@@ -8,13 +8,13 @@
   z-index: 50;
 }
 
-.modal-options {
-  background-image: var(--bg-gradient);
-}
-
-.modal-options__close {
+.modal__close {
   background-image: url(../../assets/icons/close.png);
   background-size: cover;
+}
+
+.modal-options {
+  background-image: var(--bg-gradient);
 }
 
 .modal-options__title {

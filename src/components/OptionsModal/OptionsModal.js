@@ -30,7 +30,7 @@ export default function OptionsModal ({ closeModal }) {
 
   return (
     <div className="modal modal-options">
-      <div className="game__options modal-options__close" onClick={closeModal}></div>
+      <div className="game__options modal__close" onClick={closeModal}></div>
       <h2 className='modal-options__title'>GAME SETTINGS</h2>
       <div className="modal-options__container">
         <OptionsButton color={'red'} image={restart} action={handleRestartGame} text={'Restart Game'} />
