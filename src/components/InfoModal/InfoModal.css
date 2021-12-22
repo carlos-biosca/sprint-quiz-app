@@ -18,6 +18,7 @@
 
 .modal-info__section {
   width: 86.66%;
+  margin-bottom: 1em;
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: var(--white);

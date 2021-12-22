@@ -11,6 +11,7 @@ export default function useProviderGame () {
   })
   const [playersCards, setPlayersCards] = useState(null)
   const [gameIsReady, setGameIsReady] = useState(false)
+  const [sessionToken, setSessionToken] = useState('')
 
   const handleChangeLevel = (str) => {
     setLevel(str)
@@ -30,5 +31,5 @@ export default function useProviderGame () {
     console.log('game');
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, setPlayersCards }
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, setPlayersCards, sessionToken, setSessionToken }
 }

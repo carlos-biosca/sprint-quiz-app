@@ -9,9 +9,10 @@ import Question from '../Question/Question'
 
 import generatePlayersRecords from '../../logic/generatePlayersRecords'
 import generateRandomQuestion from '../../logic/generateRandomQuestion'
+import retrieveSessionToken from '../../logic/retrieveSessionToken'
 
 export default function Game ({ openOptions, openInfo }) {
-  const { level, numberOfPlayers, playersName, playersCards, setPlayersCards } = useGame()
+  const { level, numberOfPlayers, playersName, playersCards, setPlayersCards, setSessionToken } = useGame()
   const [screen, setScreen] = useState(false)
   const [turn, setTurn] = useState(1)
   const [question, setQuestion] = useState('')
@@ -19,6 +20,14 @@ export default function Game ({ openOptions, openInfo }) {
   useEffect(() => {
     generatePlayersRecords(playersName, numberOfPlayers, setPlayersCards)
   }, [playersName, numberOfPlayers, setPlayersCards])
+
+  useEffect(() => {
+    const getApiToken = async () => {
+      const newToken = await retrieveSessionToken()
+      setSessionToken(newToken)
+    }
+    getApiToken()
+  }, [setSessionToken])
 
   const handleScreen = () => {
     setScreen(screen => !screen)
