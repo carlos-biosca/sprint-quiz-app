@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export default function useProviderGame () {
   const [numberOfPlayers, setNumberOfPlayers] = useState(1)
@@ -11,7 +11,7 @@ export default function useProviderGame () {
   })
   const [playersCards, setPlayersCards] = useState(null)
   const [gameIsReady, setGameIsReady] = useState(false)
-  const [sessionToken, setSessionToken] = useState('')
+  const sessionToken = useRef('')
 
   const handleChangeLevel = (str) => {
     setLevel(str)
@@ -31,5 +31,5 @@ export default function useProviderGame () {
     console.log('game');
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, setPlayersCards, sessionToken, setSessionToken }
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, setPlayersCards, sessionToken }
 }

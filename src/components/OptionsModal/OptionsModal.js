@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom'
+
 import './OptionsModal.css'
 
 import restart from '../../assets/icons/refreshing.png'
@@ -9,10 +11,9 @@ import OptionsButton from '../OptionsButton/OptionsButton'
 
 import { useGame } from '../../contexts/gameContext'
 
-import generatePlayersRecords from '../../logic/generatePlayersRecords'
-
 export default function OptionsModal ({ closeModal }) {
-  const { handleGameIsReady, playersName, numberOfPlayers, setPlayersCards } = useGame()
+  const history = useHistory()
+  const { handleGameIsReady } = useGame()
 
   const handleButton = () => {
     console.log('click');
@@ -24,7 +25,8 @@ export default function OptionsModal ({ closeModal }) {
   }
 
   const handleRestartGame = () => {
-    generatePlayersRecords(playersName, numberOfPlayers, setPlayersCards)
+    history.push('/')
+    history.push('/game')
     closeModal()
   }
 
