@@ -15,7 +15,7 @@ export default function Select ({ move, screen, openInfo }) {
 
   useEffect(() => {
     return () => {
-      move()
+      move(false)
     }
   }, [move])
 
@@ -23,7 +23,7 @@ export default function Select ({ move, screen, openInfo }) {
     <div className={!screen ? 'select' : 'select move-left'}>
       <div className="select__header">
         <h2 className="select__title">Let's play</h2>
-        <div className="select__back" onClick={move}></div>
+        <div className="select__back" onClick={() => move(false)}></div>
         <div className="select__info" onClick={openInfo}></div>
       </div>
       <div className="select__form">

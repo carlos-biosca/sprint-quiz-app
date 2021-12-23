@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,10 +22,6 @@ function App () {
   const [options, setOptions] = useState(false)
   const [info, setInfo] = useState(false)
 
-  const handleScreen = useCallback(() => {
-    setScreen(screen => !screen)
-  }, [])
-
   const handleToggleOptions = () => {
     setOptions(options => !options)
   }
@@ -46,8 +42,8 @@ function App () {
           }
           <Switch>
             <Route exact path="/">
-              <Start screen={screen} move={handleScreen} openOptions={handleToggleOptions} />
-              <Select screen={screen} move={handleScreen} openInfo={handleToggleInfo} />
+              <Start screen={screen} move={setScreen} openOptions={handleToggleOptions} />
+              <Select screen={screen} move={setScreen} openInfo={handleToggleInfo} />
             </Route>
             <ProtectedRoute path="/game">
               <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} />

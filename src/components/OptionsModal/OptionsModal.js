@@ -25,8 +25,8 @@ export default function OptionsModal ({ closeModal }) {
   }
 
   const handleRestartGame = () => {
-    history.push('/')
-    history.push('/game')
+    history.push('/');
+    setTimeout(() => history.push('/game'), 10);
     closeModal()
   }
 

@@ -2,13 +2,13 @@ import { useState, useRef } from 'react'
 
 import './Question.css'
 
-import { possibleOptions } from '../../data'
-
 import Button from '../../components/Button/Button'
 
-export default function Question ({ move, question }) {
+export default function Question ({ move, questionInfo }) {
+  const { category, question, correct_answer, incorrect_answers } = questionInfo
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
+  const possibleOptions = [correct_answer, ...incorrect_answers]
 
   const handleAnswerChange = (e) => {
     setAnswer(e.target.value)
@@ -28,9 +28,9 @@ export default function Question ({ move, question }) {
   return (
     <div className="question" ref={section}>
       <div className='question__header'>
-        <h2 className={`question__title question__title--${question.substr(0, question.indexOf(' '))}`}>{question}</h2>
+        <h2 className={`question__title question__title--${category.toLowerCase()}`}>{category}</h2>
       </div>
-      <div className="question__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt iure dignissimos laboriosam. Rerum maiores fugiat est sit animi nisi illo.</div>
+      <div className="question__text">{question}</div>
       <form className="question__form">
         {
           possibleOptions.map((option, index) => {

@@ -10,7 +10,7 @@ export default function Start ({ move, screen, openOptions }) {
       <div className="start__options" onClick={openOptions}></div>
       <h1 className="start__title">Sprint Quiz</h1>
       <div className="start__container">
-        <Button labelAria='start game' classes='button' action={move} text='Start' />
+        <Button labelAria='start game' classes='button' action={() => move(true)} text='Start' />
       </div>
       <img src={world} alt="" className="icon icon__world" />
       <img src={video} alt="" className="icon icon__video" />

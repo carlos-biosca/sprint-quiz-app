@@ -16,7 +16,12 @@ export default function Game ({ openOptions, openInfo }) {
   const { level, numberOfPlayers, playersName, playersCards, setPlayersCards, sessionToken } = useGame()
   const [screen, setScreen] = useState(false)
   const [turn, setTurn] = useState(1)
-  const [question, setQuestion] = useState('')
+  const [question, setQuestion] = useState({
+    category: '',
+    question: '',
+    correct_answer: '',
+    incorrect_answers: []
+  })
 
   useEffect(() => {
     generatePlayersRecords(playersName, numberOfPlayers, setPlayersCards)
@@ -44,9 +49,9 @@ export default function Game ({ openOptions, openInfo }) {
     <div className={!screen ? 'game' : 'game move-left'}>
       <div className="game__options" onClick={openOptions}></div>
       <div className="select__info game__info" onClick={openInfo}></div>
-      <div className="game__wheel" onClick={() => generateRandomQuestion(setQuestion, handleScreen)}></div>
+      <div className="game__wheel" onClick={() => generateRandomQuestion(setQuestion, handleScreen, sessionToken.current)}></div>
       <PlayersContainer cards={playersCards} />
-      <Question move={handleScreen} question={question} />
+      <Question move={handleScreen} questionInfo={question} />
     </div>
   )
 }
