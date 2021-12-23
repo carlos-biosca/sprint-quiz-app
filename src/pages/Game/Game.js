@@ -49,7 +49,7 @@ export default function Game ({ openOptions, openInfo }) {
     <div className={!screen ? 'game' : 'game move-left'}>
       <div className="game__options" onClick={openOptions}></div>
       <div className="select__info game__info" onClick={openInfo}></div>
-      <div className="game__wheel" onClick={() => generateRandomQuestion(setQuestion, handleScreen, sessionToken.current)}></div>
+      <div className="game__wheel" onClick={() => generateRandomQuestion(setQuestion, handleScreen, sessionToken.current, level)}></div>
       <PlayersContainer cards={playersCards} />
       <Question move={handleScreen} questionInfo={question} />
     </div>

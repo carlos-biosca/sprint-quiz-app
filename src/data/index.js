@@ -5,9 +5,7 @@ import scroll from '../assets/icons/scroll.png'
 import running from '../assets/icons/running.png'
 import plant from '../assets/icons/plant-based.png'
 
-const difficultyLevels = ['easy', 'normal', 'hard']
+const difficultyLevels = ['easy', 'medium', 'hard']
 const players = ['1 player', '2 players', '3 players', '4 players']
 
-const possibleOptions = ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4']
-
-export { difficultyLevels, players, world, video, monalisa, scroll, running, plant, possibleOptions }
+export { difficultyLevels, players, world, video, monalisa, scroll, running, plant }

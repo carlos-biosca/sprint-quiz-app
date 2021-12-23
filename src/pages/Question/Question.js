@@ -1,14 +1,19 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import './Question.css'
 
 import Button from '../../components/Button/Button'
+import shuffle from '../../utils/randomizeArray'
 
 export default function Question ({ move, questionInfo }) {
   const { category, question, correct_answer, incorrect_answers } = questionInfo
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
-  const possibleOptions = [correct_answer, ...incorrect_answers]
+  const possibleOptions = useRef([])
+
+  useEffect(() => {
+    possibleOptions.current = shuffle([correct_answer, ...incorrect_answers])
+  }, [correct_answer, incorrect_answers])
 
   const handleAnswerChange = (e) => {
     setAnswer(e.target.value)
@@ -33,7 +38,7 @@ export default function Question ({ move, questionInfo }) {
       <div className="question__text">{question}</div>
       <form className="question__form">
         {
-          possibleOptions.map((option, index) => {
+          possibleOptions.current.map((option, index) => {
             return (
               <label
                 key={index}
