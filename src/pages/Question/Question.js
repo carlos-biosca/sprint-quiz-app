@@ -3,17 +3,21 @@ import { useState, useRef, useEffect } from 'react'
 import './Question.css'
 
 import Button from '../../components/Button/Button'
+
 import shuffle from '../../utils/randomizeArray'
+import adaptCategoryName from '../../logic/adaptCategoryName'
 
 export default function Question ({ move, questionInfo }) {
   const { category, question, correct_answer, incorrect_answers } = questionInfo
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
   const possibleOptions = useRef([])
+  const questionCategory = useRef({})
 
   useEffect(() => {
     possibleOptions.current = shuffle([correct_answer, ...incorrect_answers])
-  }, [correct_answer, incorrect_answers])
+    questionCategory.current = adaptCategoryName(category)
+  }, [correct_answer, incorrect_answers, category])
 
   const handleAnswerChange = (e) => {
     setAnswer(e.target.value)
@@ -33,7 +37,7 @@ export default function Question ({ move, questionInfo }) {
   return (
     <div className="question" ref={section}>
       <div className='question__header'>
-        <h2 className={`question__title question__title--${category.toLowerCase()}`}>{category}</h2>
+        <h2 className={`question__title question__title--${questionCategory.current.class}`}>{questionCategory.current.name}</h2>
       </div>
       <div className="question__text">{question}</div>
       <form className="question__form">

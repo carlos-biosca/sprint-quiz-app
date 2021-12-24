@@ -8,7 +8,7 @@ import PlayersContainer from '../../components/PlayersContainer/PlayersContainer
 import Question from '../Question/Question'
 
 import generatePlayersRecords from '../../logic/generatePlayersRecords'
-import generateRandomQuestion from '../../logic/generateRandomQuestion'
+import getApiQuestion from '../../logic/getApiQuestion'
 import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
 
@@ -49,7 +49,7 @@ export default function Game ({ openOptions, openInfo }) {
     <div className={!screen ? 'game' : 'game move-left'}>
       <div className="game__options" onClick={openOptions}></div>
       <div className="select__info game__info" onClick={openInfo}></div>
-      <div className="game__wheel" onClick={() => generateRandomQuestion(setQuestion, handleScreen, sessionToken.current, level)}></div>
+      <div className="game__wheel" onClick={() => getApiQuestion(setQuestion, handleScreen, sessionToken.current, level)}></div>
       <PlayersContainer cards={playersCards} />
       <Question move={handleScreen} questionInfo={question} />
     </div>
