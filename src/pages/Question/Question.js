@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from 'react'
 import './Question.css'
 
 import Button from '../../components/Button/Button'
+import QuestionAnswers from '../../components/QuestionAnswers/QuestionAnswers'
+import AnswersChecked from '../../components/AnswersChecked/AnswersChecked'
 
 import shuffle from '../../utils/randomizeArray'
 import htmlDecode from '../../utils/htmlDecode'
@@ -31,9 +33,9 @@ export default function Question ({ move, questionInfo, answerChecked, setAnswer
     console.log('submit');
     if (answer === undefined) return
     else {
-      checkCorrectAnswer()
+      const correct = checkCorrectAnswer(answer, correct_answer)
       setAnswerChecked({
-        ...answerChecked, isAnswered: true
+        isAnswered: true, isCorrect: correct
       })
     }
   }
@@ -53,29 +55,17 @@ export default function Question ({ move, questionInfo, answerChecked, setAnswer
       <div className="question__text">{htmlDecode(question)}</div>
       <form className="question__form">
         {
-          possibleOptions.current.map((option, index) => {
-            return (
-              <label
-                key={index}
-                htmlFor={index}
-                className={answer === option ? 'question__form-label question__form-label--checked' : 'question__form-label'}>
-                <input
-                  checked={answer === option}
-                  className='question__form-input'
-                  id={index}
-                  onChange={handleAnswerChange}
-                  type="radio"
-                  value={option} />
-                <p className='question__form-text'>{htmlDecode(option)}</p>
-              </label>
-            )
-          })
+          !answerChecked.isAnswered ? (
+            <QuestionAnswers options={possibleOptions.current} answer={answer} handleAnswerChange={handleAnswerChange} />
+          ) : (
+            <AnswersChecked options={possibleOptions.current} answer={answer} isCorrect={answerChecked.isCorrect} />
+          )
         }
         {
           !answerChecked.isAnswered ? (
             <Button labelAria={'submit answer'} classes={'button question__form-button'} action={handleSubmitAnswer} text={'Submit'} />
           ) : (
-            <Button labelAria={'close question'} classes={'button question__form-button question__form-button--close'} action={handleCloseQuestion} text={'Close'} />
+            <Button labelAria={'close question'} classes={'button question__form-button question__form-button--close'} action={handleCloseQuestion} text={'Close Question'} />
           )
         }
       </form>

@@ -1,0 +1,23 @@
+.question__form-label--correct {
+  background-color: var(--nature);
+}
+
+.question__form-label--wrong {
+  background-color: var(--entertainment);
+}
+
+.question__form-label--correct .question__form-text::before {
+  display: none;
+}
+
+.question__form-label--correct .question__form-text::after {
+  display: none;
+}
+
+.question__form-label--wrong .question__form-text::before {
+  display: none;
+}
+
+.question__form-label--wrong .question__form-text::after {
+  display: none;
+}

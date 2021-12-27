@@ -24,7 +24,7 @@ export default function Game ({ openOptions, openInfo }) {
     incorrect_answers: []
   })
   const [answerChecked, setAnswerChecked] = useState({
-    isAnswered: false,
+    isAnswered: true,
     isCorrect: undefined
   })
 
