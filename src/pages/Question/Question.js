@@ -7,9 +7,11 @@ import Button from '../../components/Button/Button'
 import shuffle from '../../utils/randomizeArray'
 import htmlDecode from '../../utils/htmlDecode'
 import adaptCategoryName from '../../logic/adaptCategoryName'
+import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
 
-export default function Question ({ move, questionInfo }) {
+export default function Question ({ move, questionInfo, answerChecked, setAnswerChecked }) {
   const { category, question, correct_answer, incorrect_answers } = questionInfo
+
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
   const possibleOptions = useRef([])
@@ -24,15 +26,23 @@ export default function Question ({ move, questionInfo }) {
     setAnswer(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmitAnswer = (e) => {
     e.preventDefault()
     console.log('submit');
     if (answer === undefined) return
     else {
-      section.current.scrollTo(0, 0)
-      setAnswer(undefined)
-      move()
+      checkCorrectAnswer()
+      setAnswerChecked({
+        ...answerChecked, isAnswered: true
+      })
     }
+  }
+
+  const handleCloseQuestion = (e) => {
+    e.preventDefault()
+    section.current.scrollTo(0, 0)
+    setAnswer(undefined)
+    move()
   }
 
   return (
@@ -61,7 +71,13 @@ export default function Question ({ move, questionInfo }) {
             )
           })
         }
-        <Button labelAria={'submit answer'} classes={'button question__form-button'} action={handleSubmit} text={'Submit'} />
+        {
+          !answerChecked.isAnswered ? (
+            <Button labelAria={'submit answer'} classes={'button question__form-button'} action={handleSubmitAnswer} text={'Submit'} />
+          ) : (
+            <Button labelAria={'close question'} classes={'button question__form-button question__form-button--close'} action={handleCloseQuestion} text={'Close'} />
+          )
+        }
       </form>
     </div>
   )

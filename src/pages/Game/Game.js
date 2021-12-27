@@ -14,6 +14,7 @@ import resetSessionToken from '../../logic/resetSessionToken'
 
 export default function Game ({ openOptions, openInfo }) {
   const { level, numberOfPlayers, playersName, playersCards, setPlayersCards, sessionToken } = useGame()
+
   const [screen, setScreen] = useState(false)
   const [turn, setTurn] = useState(1)
   const [question, setQuestion] = useState({
@@ -21,6 +22,10 @@ export default function Game ({ openOptions, openInfo }) {
     question: '',
     correct_answer: '',
     incorrect_answers: []
+  })
+  const [answerChecked, setAnswerChecked] = useState({
+    isAnswered: false,
+    isCorrect: undefined
   })
 
   useEffect(() => {
@@ -45,13 +50,18 @@ export default function Game ({ openOptions, openInfo }) {
     setScreen(screen => !screen)
   }
 
+  const handleGetNewRandomQuestion = () => {
+    getApiQuestion(setQuestion, handleScreen, sessionToken.current, level)
+    setAnswerChecked({ isAnswered: false, isCorrect: undefined })
+  }
+
   return (
     <div className={!screen ? 'game' : 'game move-left'}>
       <div className="game__options" onClick={openOptions}></div>
       <div className="select__info game__info" onClick={openInfo}></div>
-      <div className="game__wheel" onClick={() => getApiQuestion(setQuestion, handleScreen, sessionToken.current, level)}></div>
+      <div className="game__wheel" onClick={() => handleGetNewRandomQuestion()}></div>
       <PlayersContainer cards={playersCards} />
-      <Question move={handleScreen} questionInfo={question} />
+      <Question move={handleScreen} questionInfo={question} answerChecked={answerChecked} setAnswerChecked={setAnswerChecked} />
     </div>
   )
 }
