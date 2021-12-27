@@ -5,6 +5,7 @@ import './Question.css'
 import Button from '../../components/Button/Button'
 
 import shuffle from '../../utils/randomizeArray'
+import htmlDecode from '../../utils/htmlDecode'
 import adaptCategoryName from '../../logic/adaptCategoryName'
 
 export default function Question ({ move, questionInfo }) {
@@ -12,7 +13,7 @@ export default function Question ({ move, questionInfo }) {
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
   const possibleOptions = useRef([])
-  const questionCategory = useRef({})
+  const questionCategory = useRef('')
 
   useEffect(() => {
     possibleOptions.current = shuffle([correct_answer, ...incorrect_answers])
@@ -36,10 +37,10 @@ export default function Question ({ move, questionInfo }) {
 
   return (
     <div className="question" ref={section}>
-      <div className='question__header'>
-        <h2 className={`question__title question__title--${questionCategory.current.class}`}>{questionCategory.current.name}</h2>
+      <div className={'question__header'}>
+        <h2 className={'question__title'}>{questionCategory.current}</h2>
       </div>
-      <div className="question__text">{question}</div>
+      <div className="question__text">{htmlDecode(question)}</div>
       <form className="question__form">
         {
           possibleOptions.current.map((option, index) => {
@@ -55,7 +56,7 @@ export default function Question ({ move, questionInfo }) {
                   onChange={handleAnswerChange}
                   type="radio"
                   value={option} />
-                <p className='question__form-text'>{option}</p>
+                <p className='question__form-text'>{htmlDecode(option)}</p>
               </label>
             )
           })

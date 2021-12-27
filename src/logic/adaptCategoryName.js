@@ -1,13 +1,13 @@
-const adaptCategoryName = (name = '') => {
-  if (name === 'Entertainment: Books') return { name: 'art & literature', class: 'art' }
-  if (name === 'Entertainment: Music') return { name: 'entertainment', class: 'entertainment' }
-  if (name === 'Entertainment: Film') return { name: 'entertainment', class: 'entertainment' }
-  if (name === 'Entertainment: Television') return { name: 'entertainment', class: 'entertainment' }
-  if (name === 'Art') return { name: 'art & literature', class: 'art' }
-  if (name === 'Science & Nature') return { name: 'science & nature', class: 'nature' }
-  if (name === 'Sports') return { name: 'sports', class: 'sports' }
-  if (name === 'History') return { name: 'history', class: 'history' }
-  if (name === 'Geography') return { name: 'geography', class: 'geography' }
+const adaptCategoryName = (name) => {
+  if (name === 'Entertainment: Books') return 'art & literature'
+  if (name === 'Entertainment: Music') return 'entertainment'
+  if (name === 'Entertainment: Film') return 'entertainment'
+  if (name === 'Entertainment: Television') return 'entertainment'
+  if (name === 'Art') return 'art & literature'
+  if (name === 'Science & Nature') return 'science & nature'
+  if (name === 'Sports') return 'sports'
+  if (name === 'History') return 'history'
+  if (name === 'Geography') return 'geography'
   if (name === '') return ''
 }
 

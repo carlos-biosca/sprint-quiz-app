@@ -14,43 +14,20 @@
 
 .question__header {
   width: 100%;
+  margin-bottom: 2em;
   padding-left: 0.8em;
   padding-right: 0.8em;
-  background-color: var(--dark-white);
+  background-color: var(--purple);
 }
 
 .question__title {
-  margin-top: 65px;
-  margin-bottom: 18px;
+  margin-top: 40px;
+  margin-bottom: 30px;
   font-size: 40px;
   line-height: 42px;
   font-weight: bold;
   text-transform: uppercase;
   color: var(--white);
-}
-
-.question__title--geography {
-  color: var(--geography);
-}
-
-.question__title--entertainment {
-  color: var(--entertainment);
-}
-
-.question__title--sports {
-  color: var(--sports);
-}
-
-.question__title--art {
-  color: var(--art);
-}
-
-.question__title--nature {
-  color: var(--nature);
-}
-
-.question__title--history {
-  color: var(--history);
 }
 
 .question__text {
@@ -78,7 +55,7 @@
 }
 
 .question__form-label:last-of-type {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .question__form-input {
