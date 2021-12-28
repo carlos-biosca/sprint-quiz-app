@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 
 import './Question.css'
 
+import { useGame } from '../../contexts/gameContext'
+
 import Button from '../../components/Button/Button'
 import QuestionAnswers from '../../components/QuestionAnswers/QuestionAnswers'
 import AnswersChecked from '../../components/AnswersChecked/AnswersChecked'
@@ -10,9 +12,11 @@ import shuffle from '../../utils/randomizeArray'
 import htmlDecode from '../../utils/htmlDecode'
 import adaptCategoryName from '../../logic/adaptCategoryName'
 import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
+import updateScore from '../../logic/updateScore'
 
-export default function Question ({ move, questionInfo, answerChecked, setAnswerChecked }) {
+export default function Question ({ move, questionInfo, answerChecked, setAnswerChecked, turn }) {
   const { category, question, correct_answer, incorrect_answers } = questionInfo
+  const { playersCards, setPlayersCards } = useGame()
 
   const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
@@ -45,6 +49,7 @@ export default function Question ({ move, questionInfo, answerChecked, setAnswer
     section.current.scrollTo(0, 0)
     setAnswer(undefined)
     move()
+    updateScore(category, answerChecked.isCorrect, playersCards, setPlayersCards, turn)
   }
 
   return (

@@ -61,7 +61,7 @@ export default function Game ({ openOptions, openInfo }) {
       <div className="select__info game__info" onClick={openInfo}></div>
       <div className="game__wheel" onClick={() => handleGetNewRandomQuestion()}></div>
       <PlayersContainer cards={playersCards} />
-      <Question move={handleScreen} questionInfo={question} answerChecked={answerChecked} setAnswerChecked={setAnswerChecked} />
+      <Question move={handleScreen} questionInfo={question} answerChecked={answerChecked} setAnswerChecked={setAnswerChecked} turn={turn} />
     </div>
   )
 }

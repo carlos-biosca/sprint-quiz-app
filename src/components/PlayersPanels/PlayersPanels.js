@@ -21,7 +21,7 @@ export default function PlayersPanels ({ cards, activeTab }) {
                 <div className={card.records.geography ? "game__piece game__piece--geography" : "game__piece"}>
                   <img src={world} alt="Geography" />
                 </div>
-                <div className={card.records.nature ? "game__piece game__piece--nature" : "game__piece"}>
+                <div className={card.records.science ? "game__piece game__piece--science" : "game__piece"}>
                   <img src={plant} alt="Nature & Science" />
                 </div>
                 <div className={card.records.sports ? "game__piece game__piece--sports" : "game__piece"}>

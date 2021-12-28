@@ -8,7 +8,7 @@ const generatePlayersRecords = (playersName, numberOfPlayers, setPlayersCards) =
         entertainment: false,
         history: false,
         geography: false,
-        nature: false,
+        science: false,
         sports: false,
         art: false
       }
