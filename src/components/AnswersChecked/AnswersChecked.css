@@ -6,18 +6,26 @@
   background-color: var(--entertainment);
 }
 
-.question__form-label--correct .question__form-text::before {
-  display: none;
+.question__form-label--correct .question__form-text::before,
+.question__form-label--wrong .question__form-text::before {
+  border: none;
 }
 
-.question__form-label--correct .question__form-text::after {
-  display: none;
+.question__form-label--correct .question__form-text::before {
+  background-image: url(../../assets/icons/marca-de-verificacion.png);
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+}
+
+.question__form-label--correct .question__form-text::after,
+.question__form-label--wrong .question__form-text::after {
+  opacity: 0;
 }
 
 .question__form-label--wrong .question__form-text::before {
-  display: none;
-}
-
-.question__form-label--wrong .question__form-text::after {
-  display: none;
+  background-image: url(../../assets/icons/incorrect.png);
+  width: 34px;
+  height: 34px;
+  background-size: 34px 34px;
 }

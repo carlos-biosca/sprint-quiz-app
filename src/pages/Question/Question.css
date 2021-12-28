@@ -44,6 +44,13 @@
   width: 85%;
 }
 
+.question__correct {
+  margin-bottom: 20px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: 20px;
+}
+
 .question__form-button {
   width: 100%;
   padding-top: 24px;

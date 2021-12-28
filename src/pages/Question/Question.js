@@ -62,6 +62,11 @@ export default function Question ({ move, questionInfo, answerChecked, setAnswer
           )
         }
         {
+          answerChecked.isAnswered && !answerChecked.isCorrect && (
+            <p className='question__correct'>*Correct answer: <br></br>{correct_answer}</p>
+          )
+        }
+        {
           !answerChecked.isAnswered ? (
             <Button labelAria={'submit answer'} classes={'button question__form-button'} action={handleSubmitAnswer} text={'Submit'} />
           ) : (
