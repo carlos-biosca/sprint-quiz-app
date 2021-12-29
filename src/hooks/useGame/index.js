@@ -9,7 +9,7 @@ export default function useProviderGame () {
     player3: 'player 3',
     player4: 'player 4'
   })
-  const [playersCards, setPlayersCards] = useState(null)
+  const playersCards = useRef(null)
   const [gameIsReady, setGameIsReady] = useState(false)
   const sessionToken = useRef('')
 
@@ -31,5 +31,5 @@ export default function useProviderGame () {
     console.log('game');
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, setPlayersCards, sessionToken }
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, sessionToken }
 }

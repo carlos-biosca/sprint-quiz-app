@@ -66,23 +66,6 @@
   box-shadow: inset 0px 0px 10px var(--art);
 }
 
-.game__piece--entertainment,
-.game__piece--history,
-.game__piece--geography,
-.game__piece--science,
-.game__piece--sports,
-.game__piece--art {
-  animation: animatedBackground 0.7s ease 6;
-}
-
-@keyframes animatedBackground {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.game__piece--animation {
+  animation: animatedBlink 0.7s ease 6;
 }

@@ -28,7 +28,7 @@ export default function InfoModal ({ closeModal }) {
           <p className='modal-info__category'>Geography</p>
         </div>
         <div className="modal-info__record">
-          <div className="game__piece game__piece--nature modal-info__piece">
+          <div className="game__piece game__piece--science modal-info__piece">
             <img src={plant} alt="Nature" />
           </div>
           <p className='modal-info__category'>Science & nature</p>

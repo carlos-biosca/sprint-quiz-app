@@ -1,13 +1,17 @@
 import adaptCategoryName from "./adaptCategoryName";
 
-const updateScore = (category, isCorrect, playersCards, setPlayersCards, turn) => {
+const updateScore = (category, isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers) => {
   if (isCorrect === true) {
-    let newCards = [...playersCards]
-    let categoryToUpdate = adaptCategoryName(category)
-    categoryToUpdate = categoryToUpdate.split(' ')[0]
+    let newCards = [...playersCards.current]
+    let categoryToUpdate = adaptCategoryName(category).split(' ')[0]
     newCards[turn - 1].records[categoryToUpdate] = isCorrect
-    setPlayersCards(newCards)
+    playersCards.current = newCards
   }
+  if (isCorrect === false && numberOfPlayers === 1) {
+    fails.current += 1
+  }
+  console.log('score updated');
+  setScoreUpdated(true)
 }
 
 export default updateScore

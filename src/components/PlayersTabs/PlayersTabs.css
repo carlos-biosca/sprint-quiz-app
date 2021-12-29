@@ -13,7 +13,7 @@
   height: 100%;
   background-color: var(--dark-grey);
   color: var(--dark-white);
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 19px;
   overflow: hidden;
 }
@@ -29,4 +29,14 @@
   max-height: 75%;
   text-transform: capitalize;
   overflow: hidden;
+}
+
+.game__fails {
+  margin-left: 0.5em;
+  margin-right: 0.1em;
+  color: var(--entertainment);
+}
+
+.game__fails--animation {
+  animation: animatedBlink 0.7s ease 6;
 }
