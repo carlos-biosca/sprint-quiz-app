@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 import './Game.css'
 
 import { useGame } from '../../contexts/gameContext'
+import { useQuestion } from '../../contexts/questionContext'
 
 import PlayersContainer from '../../components/PlayersContainer/PlayersContainer'
 import Question from '../Question/Question'
@@ -15,22 +16,11 @@ import updateScore from '../../logic/updateScore'
 
 export default function Game ({ openOptions, openInfo }) {
   const { level, numberOfPlayers, playersName, playersCards, sessionToken } = useGame()
+  const { answerStates, questionInfo, setQuestionInfo, setAnswerStates, fails } = useQuestion()
 
   const [screen, setScreen] = useState(false)
   const [turn, setTurn] = useState(1)
-  const [question, setQuestion] = useState({
-    category: '',
-    question: '',
-    correct_answer: '',
-    incorrect_answers: []
-  })
-  const [answerStates, setAnswerStates] = useState({
-    isAnswered: false,
-    isCorrect: undefined,
-    isClosed: true
-  })
   const [scoreUpdated, setScoreUpdated] = useState()
-  const fails = useRef(0)
 
   useEffect(() => {
     generatePlayersRecords(playersName, numberOfPlayers, playersCards)
@@ -52,16 +42,16 @@ export default function Game ({ openOptions, openInfo }) {
 
   useEffect(() => {
     if (answerStates.isClosed) {
-      updateScore(question.category, answerStates.isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers)
+      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers)
     }
-  }, [question.category, answerStates.isCorrect, answerStates.isClosed, playersCards, turn, numberOfPlayers])
+  }, [questionInfo.category, answerStates.isCorrect, answerStates.isClosed, playersCards, turn, numberOfPlayers, fails])
 
   const handleScreen = () => {
     setScreen(screen => !screen)
   }
 
   const handleGetNewRandomQuestion = () => {
-    getApiQuestion(setQuestion, handleScreen, sessionToken.current, level)
+    getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level)
     setAnswerStates({
       isAnswered: false,
       isCorrect: undefined,
@@ -75,8 +65,8 @@ export default function Game ({ openOptions, openInfo }) {
       <div className="game__options" onClick={openOptions}></div>
       <div className="select__info game__info" onClick={openInfo}></div>
       <div className="game__wheel" onClick={() => handleGetNewRandomQuestion()}></div>
-      <PlayersContainer cards={playersCards.current} fails={fails.current} animation={answerStates} />
-      <Question move={handleScreen} questionInfo={question} answerStates={answerStates} setAnswerStates={setAnswerStates} turn={turn} />
+      <PlayersContainer />
+      <Question move={handleScreen} />
     </div>
   )
 }

@@ -1,36 +1,24 @@
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 
 import './Question.css'
+
+import { useQuestion } from '../../contexts/questionContext'
 
 import Button from '../../components/Button/Button'
 import QuestionAnswers from '../../components/QuestionAnswers/QuestionAnswers'
 import AnswersChecked from '../../components/AnswersChecked/AnswersChecked'
 
-import shuffleArray from '../../utils/randomizeArray'
 import htmlDecode from '../../utils/htmlDecode'
-import adaptCategoryName from '../../logic/adaptCategoryName'
 import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
 
-export default function Question ({ move, questionInfo, answerStates, setAnswerStates }) {
-  const { category, question, correct_answer, incorrect_answers } = questionInfo
+export default function Question ({ move }) {
+  const { questionInfo, answerStates, setAnswerStates, questionCategory, answer, handleAnswerChange } = useQuestion()
+  const { question, correct_answer } = questionInfo
 
-  const [answer, setAnswer] = useState(undefined)
   const section = useRef(null)
-  const possibleOptions = useRef([])
-  const questionCategory = useRef('')
-
-  useEffect(() => {
-    possibleOptions.current = shuffleArray([correct_answer, ...incorrect_answers])
-    questionCategory.current = adaptCategoryName(category)
-  }, [correct_answer, incorrect_answers, category])
-
-  const handleAnswerChange = (e) => {
-    setAnswer(e.target.value)
-  }
 
   const handleSubmitAnswer = (e) => {
     e.preventDefault()
-    console.log('submit');
     if (answer === undefined) return
     else {
       const correct = checkCorrectAnswer(answer, correct_answer)
@@ -42,10 +30,10 @@ export default function Question ({ move, questionInfo, answerStates, setAnswerS
 
   const handleCloseQuestion = (e) => {
     e.preventDefault()
-    section.current.scrollTo(0, 0)
-    setAnswer(undefined)
-    move()
+    handleAnswerChange()
     setAnswerStates({ ...answerStates, isClosed: true })
+    move()
+    section.current.scrollTo(0, 0)
   }
 
   return (
@@ -57,9 +45,9 @@ export default function Question ({ move, questionInfo, answerStates, setAnswerS
       <form className="question__form">
         {
           !answerStates.isAnswered ? (
-            <QuestionAnswers options={possibleOptions.current} answer={answer} handleAnswerChange={handleAnswerChange} />
+            <QuestionAnswers />
           ) : (
-            <AnswersChecked options={possibleOptions.current} answer={answer} isCorrect={answerStates.isCorrect} />
+            <AnswersChecked />
           )
         }
         {

@@ -2,7 +2,12 @@ import './PlayersPanels.css'
 
 import { world, video, monalisa, scroll, running, plant } from '../../data'
 
-export default function PlayersPanels ({ cards, activeTab }) {
+import { useGame } from '../../contexts/gameContext'
+
+export default function PlayersPanels ({ activeTab }) {
+  const { playersCards } = useGame()
+  const cards = playersCards.current
+
   return (
     <div className="game__records">
       {

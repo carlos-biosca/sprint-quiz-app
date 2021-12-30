@@ -1,10 +1,16 @@
 import './AnswersChecked.css'
 
+import { useQuestion } from '../../contexts/questionContext'
+
 import htmlDecode from '../../utils/htmlDecode'
 
-export default function AnswersChecked ({ options, answer, isCorrect }) {
+export default function AnswersChecked () {
+  const { possibleOptions, answer, answerStates } = useQuestion()
+  const options = possibleOptions.current
+  const { isCorrect } = answerStates
+
   return (
-    options.map((option, index) => {
+    options && options.map((option, index) => {
       return (
         <label
           key={index}

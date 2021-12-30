@@ -16,6 +16,7 @@ import { ProviderGame } from './contexts/gameContext'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import OptionsModal from './components/OptionsModal/OptionsModal';
 import InfoModal from './components/InfoModal/InfoModal';
+import { ProviderQuestion } from './contexts/questionContext';
 
 function App () {
   const [screen, setScreen] = useState(false)
@@ -46,7 +47,9 @@ function App () {
               <Select screen={screen} move={setScreen} openInfo={handleToggleInfo} />
             </Route>
             <ProtectedRoute path="/game">
-              <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} />
+              <ProviderQuestion>
+                <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} />
+              </ProviderQuestion>
             </ProtectedRoute>
           </Switch>
         </Router>
