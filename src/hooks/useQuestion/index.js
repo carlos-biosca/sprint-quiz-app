@@ -15,9 +15,9 @@ export default function useProviderQuestion () {
     isCorrect: undefined,
     isClosed: true
   })
+  const [answer, setAnswer] = useState(undefined)
   const possibleOptions = useRef([])
   const questionCategory = useRef('')
-  const [answer, setAnswer] = useState(undefined)
   const fails = useRef(0)
 
   useEffect(() => {

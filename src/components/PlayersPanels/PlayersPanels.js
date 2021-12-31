@@ -36,6 +36,9 @@ export default function PlayersPanels ({ activeTab }) {
                   <img src={monalisa} alt="Art & Literature" />
                 </div>
               </div>
+              {
+                card.finalQuestion && <h3 className='game__final-question'>FINAL QUESTION</h3>
+              }
             </div>
           )
         })

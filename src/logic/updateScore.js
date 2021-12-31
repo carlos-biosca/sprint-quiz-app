@@ -1,15 +1,16 @@
 import adaptCategoryName from "./adaptCategoryName";
+import activateFinalQuestion from "./activateFinalQuestion";
 
 const updateScore = (category, isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers) => {
   if (isCorrect === true) {
-    let newCards = [...playersCards.current]
-    let categoryToUpdate = adaptCategoryName(category).split(' ')[0]
-    newCards[turn - 1].records[categoryToUpdate] = isCorrect
-    playersCards.current = newCards
+    const categoryToUpdate = adaptCategoryName(category).split(' ')[0]
+    playersCards.current[turn - 1].records[categoryToUpdate] = isCorrect
   }
-  if (isCorrect === false && numberOfPlayers === 1) {
-    fails.current += 1
-  }
+
+  if (isCorrect === false && numberOfPlayers === 1) fails.current += 1
+
+  activateFinalQuestion(playersCards, turn)
+
   console.log('score updated');
   setScoreUpdated(true)
 }

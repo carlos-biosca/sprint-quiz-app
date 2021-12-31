@@ -37,3 +37,7 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.game__wheel--blocked {
+  pointer-events: none;
+}

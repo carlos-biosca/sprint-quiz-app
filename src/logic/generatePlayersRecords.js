@@ -11,7 +11,8 @@ const generatePlayersRecords = (playersName, numberOfPlayers, playersCards) => {
         science: false,
         sports: false,
         art: false
-      }
+      },
+      finalQuestion: false
     }
     cards.push(card)
   }
