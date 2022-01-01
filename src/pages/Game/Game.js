@@ -50,14 +50,8 @@ export default function Game ({ openOptions, openInfo }) {
     setScreen(screen => !screen)
   }
 
-  const handleGetNewRandomQuestion = async () => {
-    const newQuestion = await getApiQuestion(sessionToken.current, level, playersCards.current[turn - 1].finalQuestion)
-
-    if (newQuestion.response_code === 0) {
-      setQuestionInfo(newQuestion.results[0])
-      handleScreen()
-    } else console.log('code:', newQuestion.code)
-
+  const handleGetNewRandomQuestion = () => {
+    getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level)
     setAnswerStates({
       isAnswered: false,
       isCorrect: undefined,
@@ -65,12 +59,11 @@ export default function Game ({ openOptions, openInfo }) {
     })
     setScoreUpdated(false)
   }
-
   return (
     <div className={!screen ? 'game' : 'game move-left'}>
       <div className="game__options" onClick={openOptions} />
       <div className="select__info game__info" onClick={openInfo} />
-      <div className={scoreUpdated ? 'game__wheel' : 'game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} />
+      <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} />
       <PlayersContainer />
       <Question move={handleScreen} />
     </div>
