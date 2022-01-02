@@ -1,5 +1,4 @@
 .game__records {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +29,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  overflow-x: hidden;
 }
 
 .game__piece {
@@ -76,11 +76,20 @@
 
 .game__final-question {
   position: absolute;
-  width: 84%;
+  top: calc(50% - 66px);
+  width: 100%;
   padding-top: 1em;
   padding-bottom: 1em;
   background-color: var(--purple);
   color: var(--white);
   font-size: 1.5rem;
   font-weight: bold;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.game__final-question--animation {
+  transform: translateX(0%);
+  transition: transform 0.75s ease 2s;
+  opacity: 1;
 }

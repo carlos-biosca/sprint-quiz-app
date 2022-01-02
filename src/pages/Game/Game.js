@@ -51,7 +51,7 @@ export default function Game ({ openOptions, openInfo }) {
   }
 
   const handleGetNewRandomQuestion = () => {
-    getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level)
+    getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion)
     setAnswerStates({
       isAnswered: false,
       isCorrect: undefined,
@@ -59,6 +59,7 @@ export default function Game ({ openOptions, openInfo }) {
     })
     setScoreUpdated(false)
   }
+
   return (
     <div className={!screen ? 'game' : 'game move-left'}>
       <div className="game__options" onClick={openOptions} />
