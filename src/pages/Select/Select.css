@@ -6,7 +6,8 @@
   transform: translateX(100%);
   background-color: var(--dark-white);
   transition: transform 0.35s linear;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .select.move-left {

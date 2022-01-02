@@ -13,6 +13,7 @@ import getApiQuestion from '../../logic/getApiQuestion'
 import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
 import updateScore from '../../logic/updateScore'
+import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
 
 export default function Game ({ openOptions, openInfo }) {
   const { level, numberOfPlayers, playersName, playersCards, sessionToken } = useGame()
@@ -21,9 +22,11 @@ export default function Game ({ openOptions, openInfo }) {
   const [screen, setScreen] = useState(false)
   const [turn, setTurn] = useState(1)
   const [scoreUpdated, setScoreUpdated] = useState()
+  const [transition, setTransition] = useState(true)
 
   useEffect(() => {
     generatePlayersRecords(playersName, numberOfPlayers, playersCards)
+    setTransition(false)
   }, [playersName, numberOfPlayers, playersCards])
 
   useEffect(() => {
@@ -61,12 +64,15 @@ export default function Game ({ openOptions, openInfo }) {
   }
 
   return (
-    <div className={!screen ? 'game' : 'game move-left'}>
+    <div className='game'>
       <div className="game__options" onClick={openOptions} />
       <div className="select__info game__info" onClick={openInfo} />
       <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} />
       <PlayersContainer />
-      <Question move={handleScreen} />
+      <Question move={handleScreen} screen={screen} />
+      <div className={transition ? 'game__transition move-right' : 'game__transition'}>
+        <TransitionBackground />
+      </div>
     </div>
   )
 }

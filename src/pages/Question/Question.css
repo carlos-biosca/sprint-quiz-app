@@ -6,10 +6,16 @@
   height: 100vh;
   width: 100%;
   top: 0;
-  transform: translateX(100%);
   padding-bottom: 2.375em;
   background-color: var(--dark-white);
   overflow-y: auto;
+  transform: translateX(100%);
+  z-index: 50;
+}
+
+.question.move-left {
+  transform: translateX(0%);
+  transition: transform 0.35s linear;
 }
 
 .question__header {

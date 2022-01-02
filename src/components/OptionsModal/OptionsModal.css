@@ -6,6 +6,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 50;
+  overflow-y: scroll;
 }
 
 .modal__close {

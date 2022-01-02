@@ -28,7 +28,6 @@ export default function useProviderGame () {
 
   const handleGameIsReady = () => {
     setGameIsReady(gameIsReady => !gameIsReady)
-    console.log('game');
   }
 
   return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, gameIsReady, handleGameIsReady, playersCards, sessionToken }

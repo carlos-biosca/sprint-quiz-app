@@ -11,7 +11,7 @@ import AnswersChecked from '../../components/AnswersChecked/AnswersChecked'
 import htmlDecode from '../../utils/htmlDecode'
 import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
 
-export default function Question ({ move }) {
+export default function Question ({ move, screen }) {
   const { questionInfo, answerStates, setAnswerStates, questionCategory, answer, handleAnswerChange } = useQuestion()
   const { question, correct_answer } = questionInfo
 
@@ -37,7 +37,7 @@ export default function Question ({ move }) {
   }
 
   return (
-    <div className="question" ref={section}>
+    <div className={!screen ? 'question' : 'question move-left'} ref={section}>
       <div className={'question__header'}>
         <h2 className={'question__title'}>{questionCategory.current}</h2>
       </div>

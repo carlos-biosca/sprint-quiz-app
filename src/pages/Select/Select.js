@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './Select.css'
 
@@ -11,6 +11,7 @@ import { useGame } from '../../contexts/gameContext';
 
 
 export default function Select ({ move, screen, openInfo }) {
+  const history = useHistory()
   const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleGameIsReady } = useGame()
 
   useEffect(() => {
@@ -18,6 +19,13 @@ export default function Select ({ move, screen, openInfo }) {
       move(false)
     }
   }, [move])
+
+  const handleStartGame = () => {
+    handleGameIsReady()
+    setTimeout(() => {
+      history.push('/game')
+    }, 1000)
+  }
 
   return (
     <div className={!screen ? 'select' : 'select move-left'}>
@@ -51,9 +59,7 @@ export default function Select ({ move, screen, openInfo }) {
             numberOfPlayers > 3 && <input type="text" name="player4" className='select__player' placeholder="PLAYER 4 NAME" value={playersName[3]} onChange={handleChangeName} />
           }
         </div>
-        <Link to="/game">
-          <Button labelAria='start game' classes='button button--play' action={handleGameIsReady} text='Play' />
-        </Link>
+        <Button labelAria='start game' classes='button button--play' action={handleStartGame} text='Play' />
       </div>
     </div>
   )

@@ -2,12 +2,6 @@
   position: relative;
   height: 100vh;
   background: var(--bg-gradient);
-  transition: transform 0.35s linear;
-}
-
-.game.move-left {
-  transform: translateX(-100%);
-  transition: transform 0.35s linear;
 }
 
 .game__options,
@@ -25,6 +19,7 @@
   top: 101px;
   right: 28px;
   border: 2px solid var(--black);
+  animation: animatedBlink 0.7s ease 6 3.5s;
 }
 
 .game__wheel {
@@ -40,4 +35,22 @@
 
 .game__wheel--blocked {
   pointer-events: none;
+}
+
+.game__transition {
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  background-image: var(--bg-gradient);
+  z-index: 50;
+  transform: translateX(-100%);
+  opacity: 1;
+  transition: transform 0.5s ease-out 3.5s;
+}
+
+.game__transition.move-right {
+  transform: translateX(0%);
 }
