@@ -1,8 +1,10 @@
 import { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import './Question.css'
 
 import { useQuestion } from '../../contexts/questionContext'
+import { useGame } from '../../contexts/gameContext'
 
 import Button from '../../components/Button/Button'
 import QuestionAnswers from '../../components/QuestionAnswers/QuestionAnswers'
@@ -12,6 +14,8 @@ import htmlDecode from '../../utils/htmlDecode'
 import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
 
 export default function Question ({ move, screen }) {
+  const history = useHistory()
+  const { playersCards, turn } = useGame()
   const { questionInfo, answerStates, setAnswerStates, questionCategory, answer, handleAnswerChange } = useQuestion()
   const { question, correct_answer } = questionInfo
 
@@ -22,9 +26,13 @@ export default function Question ({ move, screen }) {
     if (answer === undefined) return
     else {
       const correct = checkCorrectAnswer(answer, correct_answer)
-      setAnswerStates({
-        ...answerStates, isAnswered: true, isCorrect: correct
-      })
+      if (playersCards.current[turn - 1].finalQuestion && correct === true) {
+        history.push('/result')
+      } else {
+        setAnswerStates({
+          ...answerStates, isAnswered: true, isCorrect: correct
+        })
+      }
     }
   }
 

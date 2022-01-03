@@ -1,0 +1,13 @@
+.result {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-image: var(--bg-gradient);
+}
+
+.result__options {
+  position: absolute;
+  bottom: 0;
+}

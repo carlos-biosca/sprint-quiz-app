@@ -23,7 +23,6 @@ export default function TransitionBackground () {
       <div className='transition__category transition__category--art'>
         <img src={monalisa} alt="" className="transition__icon" />
       </div>
-
     </div>
   )
 }

@@ -16,11 +16,10 @@ import updateScore from '../../logic/updateScore'
 import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
 
 export default function Game ({ openOptions, openInfo }) {
-  const { level, numberOfPlayers, playersName, playersCards, sessionToken } = useGame()
+  const { level, numberOfPlayers, playersName, playersCards, sessionToken, turn } = useGame()
   const { answerStates, questionInfo, setQuestionInfo, setAnswerStates, fails } = useQuestion()
 
   const [screen, setScreen] = useState(false)
-  const [turn, setTurn] = useState(1)
   const [scoreUpdated, setScoreUpdated] = useState()
   const [transition, setTransition] = useState(true)
 

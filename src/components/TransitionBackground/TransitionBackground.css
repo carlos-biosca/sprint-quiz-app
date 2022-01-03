@@ -22,13 +22,6 @@
   filter: invert(100%);
 }
 
-.transition__text {
-  padding-left: 1em;
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--white);
-}
-
 .transition__category--entertainment {
   grid-row: 1/1;
   grid-column: 2/4;

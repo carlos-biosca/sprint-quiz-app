@@ -10,6 +10,7 @@ import './App.css';
 import Select from './pages/Select/Select';
 import Start from './pages/Start/Start';
 import Game from './pages/Game/Game'
+import Result from './pages/Result/Result'
 
 import { ProviderGame } from './contexts/gameContext'
 
@@ -51,6 +52,9 @@ function App () {
                 <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} />
               </ProviderQuestion>
             </ProtectedRoute>
+            <Route path="/result">
+              <Result />
+            </Route>
           </Switch>
         </Router>
       </ProviderGame>

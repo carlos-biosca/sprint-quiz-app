@@ -2,10 +2,7 @@ import { useHistory } from 'react-router-dom'
 
 import './OptionsModal.css'
 
-import restart from '../../assets/icons/refreshing.png'
-import save from '../../assets/icons/memory-card.png'
-import load from '../../assets/icons/loading.png'
-import exit from '../../assets/icons/exit.png'
+import { restart, save, load, exit } from '../../data/index'
 
 import OptionsButton from '../OptionsButton/OptionsButton'
 
