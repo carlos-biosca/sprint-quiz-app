@@ -7,7 +7,26 @@
   background-image: var(--bg-gradient);
 }
 
+.result__winner {
+  position: absolute;
+  top: 20%;
+  font-size: 2rem;
+}
+
 .result__options {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
+  z-index: 10;
+  animation: optionsMove 4s ease;
+}
+
+@keyframes optionsMove {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }

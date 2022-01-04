@@ -15,7 +15,7 @@ import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
 
 export default function Question ({ move, screen, handleGameIsOver }) {
   const history = useHistory()
-  const { playersCards, turn } = useGame()
+  const { playersCards, turn, playersName } = useGame()
   const { questionInfo, answerStates, setAnswerStates, questionCategory, answer, handleAnswerChange } = useQuestion()
   const { question, correct_answer } = questionInfo
 
@@ -27,7 +27,7 @@ export default function Question ({ move, screen, handleGameIsOver }) {
     else {
       const correct = checkCorrectAnswer(answer, correct_answer)
       if (playersCards.current[turn - 1].finalQuestion && correct === true) {
-        handleGameIsOver()
+        handleGameIsOver(true, Object.values(playersName)[turn - 1])
         history.push('/result')
       } else {
         setAnswerStates({

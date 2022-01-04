@@ -24,7 +24,10 @@ function App () {
   const [options, setOptions] = useState(false)
   const [info, setInfo] = useState(false)
   const [gameIsReady, setGameIsReady] = useState(false)
-  const [gameIsOver, setGameIsOver] = useState(false)
+  const [gameIsOver, setGameIsOver] = useState({
+    isOver: false,
+    winner: undefined
+  })
 
   const handleToggleOptions = () => {
     setOptions(options => !options)
@@ -38,8 +41,11 @@ function App () {
     setGameIsReady(gameIsReady => !gameIsReady)
   }, [])
 
-  const handleGameIsOver = () => {
-    setGameIsOver(gameIsOver => !gameIsOver)
+  const handleGameIsOver = (state, name) => {
+    setGameIsOver({
+      isOver: state,
+      winner: name
+    })
   }
 
   return (
@@ -62,8 +68,8 @@ function App () {
                 <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} handleGameIsOver={handleGameIsOver} />
               </ProviderQuestion>
             </ProtectedRoute>
-            <ProtectedRoute path="/result" game={gameIsOver} redirectTo='/game'>
-              <Result handleGameIsReady={handleGameIsReady} handleGameIsOver={handleGameIsOver} />
+            <ProtectedRoute path="/result" game={gameIsOver.isOver} redirectTo='/game'>
+              <Result handleGameIsReady={handleGameIsReady} handleGameIsOver={handleGameIsOver} winner={gameIsOver.winner} />
             </ProtectedRoute>
           </Switch>
         </Router>
