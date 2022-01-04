@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import './Game.css'
 
 import { useGame } from '../../contexts/gameContext'
 import { useQuestion } from '../../contexts/questionContext'
+
+import { maxFails } from '../../data'
 
 import PlayersContainer from '../../components/PlayersContainer/PlayersContainer'
 import Question from '../Question/Question'
@@ -14,19 +17,21 @@ import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
 import updateScore from '../../logic/updateScore'
 import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
+import checkNumberOfFails from '../../logic/checkNumberOfFails'
 
 export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
-  const { level, numberOfPlayers, playersName, playersCards, sessionToken, turn } = useGame()
-  const { answerStates, questionInfo, setQuestionInfo, setAnswerStates, fails } = useQuestion()
+  const history = useHistory()
+  const { level, numberOfPlayers, playersName, playersCards, sessionToken, turn, fails } = useGame()
+  const { questionInfo, setQuestionInfo, answerStates, setAnswerStates } = useQuestion()
 
   const [screen, setScreen] = useState(false)
   const [scoreUpdated, setScoreUpdated] = useState()
   const [transition, setTransition] = useState(true)
 
   useEffect(() => {
-    generatePlayersRecords(playersName, numberOfPlayers, playersCards)
+    generatePlayersRecords(playersName, numberOfPlayers, playersCards, fails)
     setTransition(false)
-  }, [playersName, numberOfPlayers, playersCards])
+  }, [playersName, numberOfPlayers, playersCards, fails])
 
   useEffect(() => {
     const getApiToken = async () => {
@@ -45,8 +50,14 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   useEffect(() => {
     if (answerStates.isClosed) {
       updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers)
+      const loseGame = checkNumberOfFails(maxFails, fails)
+      if (loseGame) {
+        console.log('lose');
+        handleGameIsOver(true, undefined)
+        history.push('/result')
+      }
     }
-  }, [questionInfo.category, answerStates.isCorrect, answerStates.isClosed, playersCards, turn, numberOfPlayers, fails])
+  }, [questionInfo.category, answerStates.isCorrect, answerStates.isClosed, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history])
 
   const handleScreen = () => {
     setScreen(screen => !screen)

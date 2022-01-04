@@ -18,7 +18,6 @@ export default function useProviderQuestion () {
   const [answer, setAnswer] = useState(undefined)
   const possibleOptions = useRef([])
   const questionCategory = useRef('')
-  const fails = useRef(0)
 
   useEffect(() => {
     possibleOptions.current = shuffleArray([questionInfo.correct_answer, ...questionInfo.incorrect_answers])
@@ -29,5 +28,5 @@ export default function useProviderQuestion () {
     setAnswer(str)
   }
 
-  return { questionInfo, setQuestionInfo, answerStates, setAnswerStates, possibleOptions, questionCategory, fails, answer, handleAnswerChange }
+  return { questionInfo, setQuestionInfo, answerStates, setAnswerStates, possibleOptions, questionCategory, answer, handleAnswerChange }
 }

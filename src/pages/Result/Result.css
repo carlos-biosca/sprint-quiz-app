@@ -7,10 +7,34 @@
   background-image: var(--bg-gradient);
 }
 
-.result__winner {
+.result__header {
   position: absolute;
-  top: 20%;
-  font-size: 2rem;
+  top: 10%;
+}
+
+.result__title {
+  margin-top: 10%;
+  margin-bottom: 4%;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 101.64px;
+  color: var(--black);
+  text-shadow: -5px -5px 0 var(--purple), 5px -5px 0 var(--purple),
+    -5px 5px 0 var(--purple), 5px 5px 0 var(--purple);
+}
+
+.result__name {
+  padding: 15px 12px 10px;
+  background-color: var(--white);
+  font-size: 40px;
+  font-weight: 500;
+  overflow-x: hidden;
+}
+
+.result__name span {
+  display: inline-block;
+  width: 80%;
+  overflow: hidden;
 }
 
 .result__options {

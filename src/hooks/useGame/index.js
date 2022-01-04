@@ -12,6 +12,7 @@ export default function useProviderGame () {
   const [turn, setTurn] = useState(1)
   const playersCards = useRef(null)
   const sessionToken = useRef('')
+  const fails = useRef(0)
 
   const handleChangeLevel = (str) => {
     setLevel(str)
@@ -26,5 +27,5 @@ export default function useProviderGame () {
     setPlayersName({ ...playersName, [name]: value.trim() })
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn }
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails }
 }

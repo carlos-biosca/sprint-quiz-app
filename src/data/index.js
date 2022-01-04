@@ -11,5 +11,6 @@ import exit from '../assets/icons/exit.png'
 
 const difficultyLevels = ['easy', 'medium', 'hard']
 const players = ['1 player', '2 players', '3 players', '4 players']
+const maxFails = 10
 
-export { difficultyLevels, players, world, video, monalisa, scroll, running, plant, restart, save, load, exit }
+export { difficultyLevels, players, world, video, monalisa, scroll, running, plant, restart, save, load, exit, maxFails }

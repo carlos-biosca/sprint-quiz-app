@@ -4,8 +4,8 @@ import { useGame } from '../../contexts/gameContext';
 import { useQuestion } from '../../contexts/questionContext';
 
 export default function PlayersTabs ({ toggleTab, activeTab }) {
-  const { numberOfPlayers, playersCards } = useGame()
-  const { answerStates, fails } = useQuestion()
+  const { numberOfPlayers, playersCards, fails } = useGame()
+  const { answerStates } = useQuestion()
 
   const cards = playersCards.current
   const numberOfFails = fails.current

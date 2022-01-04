@@ -33,20 +33,25 @@ export default function Result ({ handleGameIsReady, handleGameIsOver, winner })
   return (
     <section className='result'>
       <TransitionBackground />
-      <div className='result__winner'>
+      <div className='result__header'>
         {
-          numberOfPlayers === 1 && winner ? (
-            <h3>You Win</h3>
-          ) : (
-            <>
-              <h3>Winner</h3>
-              <p>{winner}</p>
-            </>
+          numberOfPlayers === 1 && winner && (
+            <h3 className='result__title'>WINNER</h3>
           )
         }
         {
           numberOfPlayers === 1 && !winner && (
-            <h3>Game Over</h3>
+            <h3 className='result__title'>GAME OVER</h3>
+          )
+        }
+        {
+          numberOfPlayers > 1 && winner && (
+            <>
+              <h3 className='result__title'>WINNER</h3>
+              <div className='result__name'>
+                <span>{winner}</span>
+              </div>
+            </>
           )
         }
       </div>
