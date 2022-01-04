@@ -10,9 +10,9 @@ import { difficultyLevels, players } from '../../data';
 import { useGame } from '../../contexts/gameContext';
 
 
-export default function Select ({ move, screen, openInfo }) {
+export default function Select ({ move, screen, openInfo, handleGameIsReady }) {
   const history = useHistory()
-  const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, handleGameIsReady } = useGame()
+  const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName } = useGame()
 
   useEffect(() => {
     return () => {

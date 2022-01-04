@@ -1,5 +1,7 @@
 import { useHistory } from 'react-router-dom'
 
+import { useEffect } from 'react'
+
 import './Result.css'
 
 import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
@@ -7,18 +9,21 @@ import OptionsButton from '../../components/OptionsButton/OptionsButton'
 
 import { restart, exit } from '../../data/index'
 
-import { useGame } from '../../contexts/gameContext'
-
-export default function Result () {
-  const { handleGameIsReady } = useGame()
+export default function Result ({ handleGameIsReady, handleGameIsOver }) {
   const history = useHistory()
 
-  const handleExitGame = () => {
+  useEffect(() => {
     handleGameIsReady()
+  }, [handleGameIsReady])
+
+  const handleExitGame = () => {
+    handleGameIsOver()
     history.push('/')
   }
 
   const handleRestartGame = () => {
+    handleGameIsReady()
+    handleGameIsOver()
     history.push('/game');
   }
 

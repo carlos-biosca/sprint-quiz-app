@@ -6,11 +6,8 @@ import { restart, save, load, exit } from '../../data/index'
 
 import OptionsButton from '../OptionsButton/OptionsButton'
 
-import { useGame } from '../../contexts/gameContext'
-
-export default function OptionsModal ({ closeModal }) {
+export default function OptionsModal ({ closeModal, handleGameIsReady }) {
   const history = useHistory()
-  const { handleGameIsReady } = useGame()
 
   const handleButton = () => {
     console.log('click');
@@ -22,7 +19,7 @@ export default function OptionsModal ({ closeModal }) {
   }
 
   const handleRestartGame = () => {
-    history.push('/');
+    history.push('/result');
     setTimeout(() => history.push('/game'), 10);
     closeModal()
   }

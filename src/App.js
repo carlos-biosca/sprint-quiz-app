@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +23,8 @@ function App () {
   const [screen, setScreen] = useState(false)
   const [options, setOptions] = useState(false)
   const [info, setInfo] = useState(false)
+  const [gameIsReady, setGameIsReady] = useState(false)
+  const [gameIsOver, setGameIsOver] = useState(false)
 
   const handleToggleOptions = () => {
     setOptions(options => !options)
@@ -32,12 +34,20 @@ function App () {
     setInfo(info => !info)
   }
 
+  const handleGameIsReady = useCallback(() => {
+    setGameIsReady(gameIsReady => !gameIsReady)
+  }, [])
+
+  const handleGameIsOver = () => {
+    setGameIsOver(gameIsOver => !gameIsOver)
+  }
+
   return (
     <div className="App">
       <ProviderGame>
         <Router>
           {
-            options && <OptionsModal closeModal={handleToggleOptions} />
+            options && <OptionsModal closeModal={handleToggleOptions} handleGameIsReady={handleGameIsReady} />
           }
           {
             info && <InfoModal closeModal={handleToggleInfo} />
@@ -45,16 +55,16 @@ function App () {
           <Switch>
             <Route exact path="/">
               <Start screen={screen} move={setScreen} openOptions={handleToggleOptions} />
-              <Select screen={screen} move={setScreen} openInfo={handleToggleInfo} />
+              <Select screen={screen} move={setScreen} openInfo={handleToggleInfo} handleGameIsReady={handleGameIsReady} />
             </Route>
-            <ProtectedRoute path="/game">
+            <ProtectedRoute path="/game" game={gameIsReady} redirectTo='/'>
               <ProviderQuestion>
-                <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} />
+                <Game openOptions={handleToggleOptions} openInfo={handleToggleInfo} handleGameIsOver={handleGameIsOver} />
               </ProviderQuestion>
             </ProtectedRoute>
-            <Route path="/result">
-              <Result />
-            </Route>
+            <ProtectedRoute path="/result" game={gameIsOver} redirectTo='/game'>
+              <Result handleGameIsReady={handleGameIsReady} handleGameIsOver={handleGameIsOver} />
+            </ProtectedRoute>
           </Switch>
         </Router>
       </ProviderGame>

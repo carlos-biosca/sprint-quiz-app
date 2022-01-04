@@ -13,7 +13,7 @@ import AnswersChecked from '../../components/AnswersChecked/AnswersChecked'
 import htmlDecode from '../../utils/htmlDecode'
 import checkCorrectAnswer from '../../logic/checkCorrectAnswer'
 
-export default function Question ({ move, screen }) {
+export default function Question ({ move, screen, handleGameIsOver }) {
   const history = useHistory()
   const { playersCards, turn } = useGame()
   const { questionInfo, answerStates, setAnswerStates, questionCategory, answer, handleAnswerChange } = useQuestion()
@@ -27,6 +27,7 @@ export default function Question ({ move, screen }) {
     else {
       const correct = checkCorrectAnswer(answer, correct_answer)
       if (playersCards.current[turn - 1].finalQuestion && correct === true) {
+        handleGameIsOver()
         history.push('/result')
       } else {
         setAnswerStates({

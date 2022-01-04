@@ -15,7 +15,7 @@ import resetSessionToken from '../../logic/resetSessionToken'
 import updateScore from '../../logic/updateScore'
 import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
 
-export default function Game ({ openOptions, openInfo }) {
+export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const { level, numberOfPlayers, playersName, playersCards, sessionToken, turn } = useGame()
   const { answerStates, questionInfo, setQuestionInfo, setAnswerStates, fails } = useQuestion()
 
@@ -68,7 +68,7 @@ export default function Game ({ openOptions, openInfo }) {
       <div className="select__info game__info" onClick={openInfo} />
       <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} />
       <PlayersContainer />
-      <Question move={handleScreen} screen={screen} />
+      <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
       <div className={transition ? 'game__transition move-right' : 'game__transition'}>
         <TransitionBackground />
       </div>

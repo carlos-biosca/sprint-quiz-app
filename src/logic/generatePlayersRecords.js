@@ -12,7 +12,7 @@ const generatePlayersRecords = (playersName, numberOfPlayers, playersCards) => {
         sports: false,
         art: false
       },
-      finalQuestion: true
+      finalQuestion: false
     }
     cards.push(card)
   }

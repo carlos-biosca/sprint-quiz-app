@@ -1,18 +1,15 @@
 import { Redirect, Route } from "react-router";
 
-import { useGame } from "../../contexts/gameContext";
-
-export default function ProtectedRoute ({ children }) {
-  const { gameIsReady } = useGame()
+export default function ProtectedRoute ({ children, game, redirectTo }) {
   return (
     <Route
       render={({ location }) =>
-        gameIsReady ? (
+        game ? (
           children
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: `${redirectTo}`,
               state: { from: location }
             }}
           />
