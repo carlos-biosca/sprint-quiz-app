@@ -1,0 +1,56 @@
+.wheel__container {
+  position: relative;
+  top: 41px;
+  /* left: 0; */
+  left: -38.6%;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.wheel__score {
+  position: absolute;
+  left: calc(50% - 105px);
+  top: 0;
+  height: 50%;
+  width: 210px;
+  clip-path: polygon(95% 0%, 58% 76%, 42% 76%, 5% 0%);
+  transform-origin: bottom;
+}
+
+.wheel__score--entertainment {
+  background-color: var(--entertainment);
+}
+.wheel__score--history {
+  background-color: var(--history);
+  transform: rotate(60deg);
+}
+.wheel__score--geography {
+  background-color: var(--geography);
+  transform: rotate(120deg);
+}
+.wheel__score--nature {
+  background-color: var(--nature);
+  transform: rotate(180deg);
+}
+.wheel__score--sports {
+  background-color: var(--sports);
+  transform: rotate(240deg);
+}
+.wheel__score--art {
+  background-color: var(--art);
+  transform: rotate(300deg);
+}
+
+.wheel__center {
+  /* display: none; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border-radius: 50%;
+}

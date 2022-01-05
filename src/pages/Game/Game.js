@@ -8,6 +8,8 @@ import { useQuestion } from '../../contexts/questionContext'
 
 import { maxFails } from '../../data'
 
+import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
+import SpinWheel from '../../components/SpinWheel/SpinWheel'
 import PlayersContainer from '../../components/PlayersContainer/PlayersContainer'
 import Question from '../Question/Question'
 
@@ -16,7 +18,6 @@ import getApiQuestion from '../../logic/getApiQuestion'
 import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
 import updateScore from '../../logic/updateScore'
-import TransitionBackground from '../../components/TransitionBackground/TransitionBackground'
 import checkNumberOfFails from '../../logic/checkNumberOfFails'
 
 export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
@@ -77,7 +78,8 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
     <div className='game'>
       <div className="game__options" onClick={openOptions} />
       <div className="select__info game__info" onClick={openInfo} />
-      <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} />
+      {/* <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} /> */}
+      <SpinWheel />
       <PlayersContainer />
       <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
       <div className={transition ? 'game__transition move-right' : 'game__transition'}>
