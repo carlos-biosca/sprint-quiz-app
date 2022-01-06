@@ -9,48 +9,126 @@
   overflow: hidden;
 }
 
-.wheel__score {
+.wheel__wrap {
   position: absolute;
-  left: calc(50% - 105px);
-  top: 0;
   height: 50%;
   width: 210px;
-  clip-path: polygon(95% 0%, 58% 76%, 42% 76%, 5% 0%);
+  left: calc(50% - 105px);
   transform-origin: bottom;
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.5));
 }
 
-.wheel__score--entertainment {
-  background-color: var(--entertainment);
+.wheel__wrap::before,
+.wheel__wrap::after {
+  content: "";
+  position: absolute;
+  top: 131px;
+  border-top-width: 4px;
+  border-top-style: solid;
+  z-index: 20;
 }
-.wheel__score--history {
-  background-color: var(--history);
+
+.wheel__wrap::before {
+  left: 94px;
+  border-right: 3px solid transparent;
+  border-left: 26px solid transparent;
+  transform: rotate(-4deg);
+}
+
+.wheel__wrap::after {
+  left: 87px;
+  border-right: 26px solid transparent;
+  border-left: 3px solid transparent;
+  transform: rotate(4deg);
+}
+
+.wheel__wrap--entertainment::before,
+.wheel__wrap--entertainment::after {
+  border-top-color: var(--entertainment);
+}
+
+.wheel__wrap--history {
   transform: rotate(60deg);
 }
-.wheel__score--geography {
-  background-color: var(--geography);
+
+.wheel__wrap--history::before,
+.wheel__wrap--history::after {
+  border-top-color: var(--history);
+}
+
+.wheel__wrap--geography {
   transform: rotate(120deg);
 }
-.wheel__score--nature {
-  background-color: var(--nature);
+
+.wheel__wrap--geography::before,
+.wheel__wrap--geography::after {
+  border-top-color: var(--geography);
+}
+
+.wheel__wrap--nature {
   transform: rotate(180deg);
 }
-.wheel__score--sports {
-  background-color: var(--sports);
+
+.wheel__wrap--nature::before,
+.wheel__wrap--nature::after {
+  border-top-color: var(--nature);
+}
+
+.wheel__wrap--sports {
   transform: rotate(240deg);
 }
-.wheel__score--art {
-  background-color: var(--art);
+
+.wheel__wrap--sports::before,
+.wheel__wrap--sports::after {
+  border-top-color: var(--sports);
+}
+
+.wheel__wrap--art {
   transform: rotate(300deg);
 }
 
+.wheel__wrap--art::before,
+.wheel__wrap--art::after {
+  border-top-color: var(--art);
+}
+
+.wheel__score {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(95% 0%, 58% 73%, 42% 73%, 5% 0%);
+}
+
+.wheel__score--entertainment {
+  background: linear-gradient(20deg, #e63c1e 55%, #fff 120%);
+}
+
+.wheel__score--history {
+  background: linear-gradient(20deg, #f5ee30 55%, #fff 120%);
+}
+
+.wheel__score--geography {
+  background: linear-gradient(20deg, #0ec5d6 55%, #fff 120%);
+}
+
+.wheel__score--nature {
+  background: linear-gradient(20deg, #60f11c 55%, #fff 120%);
+}
+
+.wheel__score--sports {
+  background: linear-gradient(20deg, #ffbc41 55%, #fff 120%);
+}
+
+.wheel__score--art {
+  background: linear-gradient(20deg, #ff57f7 30%, #fff 120%);
+}
+
 .wheel__center {
-  /* display: none; */
   position: absolute;
   top: 50%;
   left: 50%;
   width: 60px;
   height: 60px;
   transform: translate(-50%, -50%);
-  background-color: var(--white);
+  background-color: var(--dark-white);
   border-radius: 50%;
 }
