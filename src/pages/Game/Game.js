@@ -49,7 +49,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   }, [sessionToken])
 
   useEffect(() => {
-    if (answerStates.isClosed) {
+    if (answerStates.isClosed && answerStates.isAnswered) {
       updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers)
       const loseGame = checkNumberOfFails(maxFails, fails)
       if (loseGame) {
@@ -58,7 +58,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
         history.push('/result')
       }
     }
-  }, [questionInfo.category, answerStates.isCorrect, answerStates.isClosed, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history])
+  }, [questionInfo.category, answerStates.isCorrect, answerStates.isAnswered, answerStates.isClosed, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history])
 
   const handleScreen = () => {
     setScreen(screen => !screen)
