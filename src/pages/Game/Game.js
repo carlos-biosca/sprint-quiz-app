@@ -26,7 +26,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const { questionInfo, setQuestionInfo, answerStates, setAnswerStates } = useQuestion()
 
   const [screen, setScreen] = useState(false)
-  const [scoreUpdated, setScoreUpdated] = useState()
+  const [scoreIsUpdated, setScoreIsUpdated] = useState(true)
   const [transition, setTransition] = useState(true)
 
   useEffect(() => {
@@ -50,7 +50,8 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
 
   useEffect(() => {
     if (answerStates.isClosed && answerStates.isAnswered) {
-      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, setScoreUpdated, numberOfPlayers)
+      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, setScoreIsUpdated, numberOfPlayers)
+      setScoreIsUpdated(scoreIsUpdated => !scoreIsUpdated)
       const loseGame = checkNumberOfFails(maxFails, fails)
       if (loseGame) {
         console.log('lose');
@@ -71,7 +72,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
       isCorrect: undefined,
       isClosed: false
     })
-    setScoreUpdated(false)
+    setScoreIsUpdated(false)
   }
 
   return (
@@ -79,7 +80,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
       <div className="game__options" onClick={openOptions} />
       <div className="select__info game__info" onClick={openInfo} />
       {/* <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} /> */}
-      <SpinWheel />
+      <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} />
       <PlayersContainer />
       <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
       <div className={transition ? 'game__transition move-right' : 'game__transition'}>

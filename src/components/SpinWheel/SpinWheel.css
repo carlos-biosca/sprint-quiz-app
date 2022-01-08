@@ -7,7 +7,11 @@
   height: 360px;
   border-radius: 50%;
   overflow: hidden;
-  transition: 6s ease;
+  transition: transform 6s ease-in-out;
+}
+
+.wheel__container--blocked {
+  pointer-events: none;
 }
 
 .wheel__wrap {

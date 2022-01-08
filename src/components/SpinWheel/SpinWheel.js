@@ -1,17 +1,29 @@
 import { useRef } from 'react/cjs/react.development';
+
+import { useQuestion } from '../../contexts/questionContext';
+
 import './SpinWheel.css'
 
-export default function SpinWheel () {
+export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated }) {
+  const { setAnswerStates } = useQuestion()
   const wheel = useRef(null)
-  let number = Math.ceil(Math.random() * 1000) + 5000;
+  const number = useRef(0)
+
 
   const handleSpinWheel = () => {
-    wheel.current.style.transform = `rotate(${number}deg)`
-    number += Math.ceil(Math.random() * 1000) + 2000;
+    number.current += Math.ceil(Math.random() * 1000) + 2000;
+    wheel.current.style.transform = `rotate(${number.current}deg)`
+
+    setAnswerStates({
+      isAnswered: false,
+      isCorrect: undefined,
+      isClosed: false
+    })
+    setScoreIsUpdated(false)
   }
 
   return (
-    <div className="wheel__container" onClick={handleSpinWheel} ref={wheel}>
+    <div className={scoreIsUpdated ? 'wheel__container' : 'wheel__container wheel__container--blocked'} onClick={handleSpinWheel} ref={wheel}>
       <div className='wheel__center' />
       <div className="wheel__wrap wheel__wrap--entertainment">
         <div className="wheel__score wheel__score--entertainment" />
