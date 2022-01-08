@@ -14,7 +14,6 @@ import PlayersContainer from '../../components/PlayersContainer/PlayersContainer
 import Question from '../Question/Question'
 
 import generatePlayersRecords from '../../logic/generatePlayersRecords'
-import getApiQuestion from '../../logic/getApiQuestion'
 import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
 import updateScore from '../../logic/updateScore'
@@ -22,8 +21,8 @@ import checkNumberOfFails from '../../logic/checkNumberOfFails'
 
 export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const history = useHistory()
-  const { level, numberOfPlayers, playersName, playersCards, sessionToken, turn, fails } = useGame()
-  const { questionInfo, setQuestionInfo, answerStates, setAnswerStates } = useQuestion()
+  const { numberOfPlayers, playersName, playersCards, sessionToken, turn, fails } = useGame()
+  const { questionInfo, answerStates } = useQuestion()
 
   const [screen, setScreen] = useState(false)
   const [scoreIsUpdated, setScoreIsUpdated] = useState(true)
@@ -50,8 +49,8 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
 
   useEffect(() => {
     if (answerStates.isClosed && answerStates.isAnswered) {
-      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, setScoreIsUpdated, numberOfPlayers)
-      setScoreIsUpdated(scoreIsUpdated => !scoreIsUpdated)
+      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, numberOfPlayers)
+      setScoreIsUpdated(true)
       const loseGame = checkNumberOfFails(maxFails, fails)
       if (loseGame) {
         console.log('lose');
@@ -65,22 +64,12 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
     setScreen(screen => !screen)
   }
 
-  const handleGetNewRandomQuestion = () => {
-    getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion)
-    setAnswerStates({
-      isAnswered: false,
-      isCorrect: undefined,
-      isClosed: false
-    })
-    setScoreIsUpdated(false)
-  }
-
   return (
     <div className='game'>
       <div className="game__options" onClick={openOptions} />
       <div className="select__info game__info" onClick={openInfo} />
-      {/* <div className={scoreUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} /> */}
-      <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} />
+      {/* <div className={scoreIsUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} /> */}
+      <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} handleScreen={handleScreen} />
       <PlayersContainer />
       <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
       <div className={transition ? 'game__transition move-right' : 'game__transition'}>

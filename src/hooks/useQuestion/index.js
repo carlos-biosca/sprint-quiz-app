@@ -11,7 +11,7 @@ export default function useProviderQuestion () {
     incorrect_answers: []
   })
   const [answerStates, setAnswerStates] = useState({
-    isAnswered: true,
+    isAnswered: false,
     isCorrect: undefined,
     isClosed: true
   })

@@ -1,18 +1,27 @@
 import { useRef } from 'react/cjs/react.development';
 
+import { useGame } from '../../contexts/gameContext';
 import { useQuestion } from '../../contexts/questionContext';
+
+import getApiQuestion from '../../logic/getApiQuestion'
 
 import './SpinWheel.css'
 
-export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated }) {
-  const { setAnswerStates } = useQuestion()
+export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleScreen }) {
+  const { level, sessionToken, playersCards, turn } = useGame()
+  const { setAnswerStates, setQuestionInfo } = useQuestion()
   const wheel = useRef(null)
   const number = useRef(0)
 
 
   const handleSpinWheel = () => {
+    if (number === 0) number.current = 120
     number.current += Math.ceil(Math.random() * 1000) + 2000;
     wheel.current.style.transform = `rotate(${number.current}deg)`
+
+    setTimeout(() => {
+      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion)
+    }, 8000)
 
     setAnswerStates({
       isAnswered: false,
