@@ -11,16 +11,19 @@ export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleSc
   const { level, sessionToken, playersCards, turn } = useGame()
   const { setAnswerStates, setQuestionInfo } = useQuestion()
   const wheel = useRef(null)
-  const number = useRef(0)
+  const wheelDegrees = useRef(0)
 
 
   const handleSpinWheel = () => {
-    if (number === 0) number.current = 120
-    number.current += Math.ceil(Math.random() * 1000) + 2000;
-    wheel.current.style.transform = `rotate(${number.current}deg)`
+    if (wheelDegrees === 0) wheelDegrees.current = 120
+    wheelDegrees.current += Math.ceil(Math.random() * 1000) + 2000;
+    wheel.current.style.transform = `rotate(${wheelDegrees.current}deg)`
+
+    const randomWheelCategoryNumber = Math.floor((wheelDegrees.current % 360) / 60)
+    console.log(randomWheelCategoryNumber);
 
     setTimeout(() => {
-      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion)
+      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion, randomWheelCategoryNumber)
     }, 8000)
 
     setAnswerStates({

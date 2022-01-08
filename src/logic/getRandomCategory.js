@@ -1,17 +1,15 @@
-const getRandomCategory = () => {
-  let randomCategory
+const getRandomCategory = (number) => {
   let randomSubcategory
-  const categories = [[11, 12, 14], 23, 22, 17, 21, [25, 10]]
-  randomCategory = Math.floor(Math.random() * 6)
-  if (randomCategory === 0) {
+  const apiCategories = [23, [11, 12, 14], [25, 10], 21, 17, 22]
+  if (number === 1) {
     randomSubcategory = Math.floor(Math.random() * 3)
-    return categories[randomCategory][randomSubcategory]
+    return apiCategories[number][randomSubcategory]
   }
-  if (randomCategory === 5) {
+  if (number === 2) {
     randomSubcategory = Math.floor(Math.random() * 2)
-    return categories[randomCategory][randomSubcategory]
+    return apiCategories[number][randomSubcategory]
   }
-  return categories[randomCategory]
+  return apiCategories[number]
 }
 
 export default getRandomCategory
