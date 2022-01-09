@@ -22,21 +22,6 @@
   animation: animatedBlink 0.7s ease 6 3.5s;
 }
 
-.game__wheel {
-  position: absolute;
-  top: 41px;
-  left: -38.6%;
-  width: 97.3%;
-  height: 365px;
-  background-image: url(../../assets/icons/trivialLogo.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.game__wheel--blocked {
-  pointer-events: none;
-}
-
 .game__transition {
   position: absolute;
   top: 0;

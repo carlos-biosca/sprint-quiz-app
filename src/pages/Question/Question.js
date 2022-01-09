@@ -24,19 +24,20 @@ export default function Question ({ move, screen, handleGameIsOver }) {
   const handleSubmitAnswer = (e) => {
     e.preventDefault()
     if (answer === undefined) return
-    else {
-      const correct = checkCorrectAnswer(answer, correct_answer)
-      if (playersCards.current[turn - 1].finalQuestion && correct === true) {
-        handleGameIsOver(true, Object.values(playersName)[turn - 1])
-        setTimeout(() => {
-          history.push('/result')
-        }, 500)
-      } else {
-        setAnswerStates({
-          ...answerStates, isAnswered: true, isCorrect: correct
-        })
-      }
+
+    const correct = checkCorrectAnswer(answer, correct_answer)
+
+    if (playersCards.current[turn - 1].finalQuestion && correct === true) {
+      handleGameIsOver(true, Object.values(playersName)[turn - 1])
+      setTimeout(() => {
+        history.push('/result')
+      }, 500)
+    } else {
+      setAnswerStates({
+        ...answerStates, isAnswered: true, isCorrect: correct
+      })
     }
+
   }
 
   const handleCloseQuestion = (e) => {

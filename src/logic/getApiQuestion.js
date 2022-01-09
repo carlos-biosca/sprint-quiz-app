@@ -1,9 +1,9 @@
 import fetchData from '../utils/fetchData'
 import getRandomCategory from './getRandomCategory'
 
-const getApiQuestion = async (setQuestion, handleScreen, sessionToken, level, finalQuestion, randomWheelCategoryNumber) => {
+const getApiQuestion = async (setQuestion, handleScreen, sessionToken, level, finalQuestion, wheelNumber) => {
   let question
-  const category = getRandomCategory(randomWheelCategoryNumber)
+  const category = getRandomCategory(wheelNumber)
 
   if (!finalQuestion) {
     question = await fetchData(`https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${level}&type=multiple&token=${sessionToken}`)

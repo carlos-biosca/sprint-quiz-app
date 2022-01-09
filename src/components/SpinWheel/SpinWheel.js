@@ -2,6 +2,7 @@ import { useRef } from 'react/cjs/react.development';
 
 import { useGame } from '../../contexts/gameContext';
 import { useQuestion } from '../../contexts/questionContext';
+import calculateWheelNumber from '../../logic/calculateWheelNumber';
 
 import getApiQuestion from '../../logic/getApiQuestion'
 
@@ -12,19 +13,18 @@ export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleSc
   const { setAnswerStates, setQuestionInfo } = useQuestion()
   const wheel = useRef(null)
   const wheelDegrees = useRef(0)
-
+  const wheelNumber = useRef(undefined)
 
   const handleSpinWheel = () => {
-    if (wheelDegrees === 0) wheelDegrees.current = 120
-    wheelDegrees.current += Math.ceil(Math.random() * 1000) + 2000;
-    wheel.current.style.transform = `rotate(${wheelDegrees.current}deg)`
-
-    const randomWheelCategoryNumber = Math.floor((wheelDegrees.current % 360) / 60)
-    console.log(randomWheelCategoryNumber);
+    wheelNumber.current = calculateWheelNumber(wheel, wheelDegrees)
 
     setTimeout(() => {
-      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion, randomWheelCategoryNumber)
-    }, 8000)
+      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion, wheelNumber.current)
+    }, 9000)
+
+    setTimeout(() => {
+      wheelNumber.current = undefined
+    }, 10000)
 
     setAnswerStates({
       isAnswered: false,
@@ -37,22 +37,22 @@ export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleSc
   return (
     <div className={scoreIsUpdated ? 'wheel__container' : 'wheel__container wheel__container--blocked'} onClick={handleSpinWheel} ref={wheel}>
       <div className='wheel__center' />
-      <div className="wheel__wrap wheel__wrap--entertainment">
+      <div className={wheelNumber.current === 1 ? "wheel__wrap wheel__wrap--entertainment wheel__wrap--active" : "wheel__wrap wheel__wrap--entertainment"}>
         <div className="wheel__score wheel__score--entertainment" />
       </div>
-      <div className="wheel__wrap wheel__wrap--history">
+      <div className={wheelNumber.current === 0 ? "wheel__wrap wheel__wrap--history wheel__wrap--active" : "wheel__wrap wheel__wrap--history"}>
         <div className="wheel__score wheel__score--history" />
       </div>
-      <div className="wheel__wrap wheel__wrap--geography">
+      <div className={wheelNumber.current === 5 ? "wheel__wrap wheel__wrap--geography wheel__wrap--active" : "wheel__wrap wheel__wrap--geography"}>
         <div className="wheel__score wheel__score--geography" />
       </div>
-      <div className="wheel__wrap wheel__wrap--nature">
+      <div className={wheelNumber.current === 4 ? "wheel__wrap wheel__wrap--nature wheel__wrap--active" : "wheel__wrap wheel__wrap--nature"}>
         <div className="wheel__score wheel__score--nature" />
       </div>
-      <div className="wheel__wrap wheel__wrap--sports">
+      <div className={wheelNumber.current === 3 ? "wheel__wrap wheel__wrap--sports wheel__wrap--active" : "wheel__wrap wheel__wrap--sports"}>
         <div className="wheel__score wheel__score--sports" />
       </div>
-      <div className="wheel__wrap wheel__wrap--art">
+      <div className={wheelNumber.current === 2 ? "wheel__wrap wheel__wrap--art wheel__wrap--active" : "wheel__wrap wheel__wrap--art"}>
         <div className="wheel__score wheel__score--art" />
       </div>
     </div>

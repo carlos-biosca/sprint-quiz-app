@@ -58,7 +58,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
         history.push('/result')
       }
     }
-  }, [questionInfo.category, answerStates.isCorrect, answerStates.isAnswered, answerStates.isClosed, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history])
+  }, [questionInfo.category, answerStates, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history])
 
   const handleScreen = () => {
     setScreen(screen => !screen)
@@ -68,7 +68,6 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
     <div className='game'>
       <div className="game__options" onClick={openOptions} />
       <div className="select__info game__info" onClick={openInfo} />
-      {/* <div className={scoreIsUpdated ? 'game__wheel' : 'game__wheel game__wheel--blocked'} onClick={() => handleGetNewRandomQuestion()} /> */}
       <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} handleScreen={handleScreen} />
       <PlayersContainer />
       <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
