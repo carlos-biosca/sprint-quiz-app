@@ -4,8 +4,8 @@ import { world, video, monalisa, scroll, running, plant } from '../../data'
 
 import { useGame } from '../../contexts/gameContext'
 
-export default function PlayersPanels ({ activeTab }) {
-  const { playersCards } = useGame()
+export default function PlayersPanels () {
+  const { playersCards, turn } = useGame()
   const cards = playersCards.current
 
   return (
@@ -14,7 +14,7 @@ export default function PlayersPanels ({ activeTab }) {
         cards && cards.map((card, index) => {
           return (
             <div key={index}
-              className={activeTab === index + 1 ? "game__record  game__record--active" : "game__record"}
+              className={turn.current === index + 1 ? "game__record  game__record--active" : "game__record"}
             >
               <div className="game__pieces">
                 <div className={card.records.entertainment ? "game__piece game__piece--entertainment game__piece--animation" : "game__piece"}>

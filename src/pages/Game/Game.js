@@ -21,17 +21,17 @@ import checkNumberOfFails from '../../logic/checkNumberOfFails'
 
 export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const history = useHistory()
-  const { numberOfPlayers, playersName, playersCards, sessionToken, turn, fails } = useGame()
-  const { questionInfo, answerStates } = useQuestion()
+  const { numberOfPlayers, playersName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn } = useGame()
+  const { questionInfo, answerStates, setAnswerStates } = useQuestion()
 
   const [screen, setScreen] = useState(false)
   const [scoreIsUpdated, setScoreIsUpdated] = useState(true)
   const [transition, setTransition] = useState(true)
 
   useEffect(() => {
-    generatePlayersRecords(playersName, numberOfPlayers, playersCards, fails)
+    generatePlayersRecords(playersName, numberOfPlayers, playersCards, fails, turn)
     setTransition(false)
-  }, [playersName, numberOfPlayers, playersCards, fails])
+  }, [playersName, numberOfPlayers, playersCards, fails, turn])
 
   useEffect(() => {
     const getApiToken = async () => {
@@ -49,8 +49,13 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
 
   useEffect(() => {
     if (answerStates.isClosed && answerStates.isAnswered) {
-      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, numberOfPlayers)
+      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, numberOfPlayers, handleNextPlayerTurn)
       setScoreIsUpdated(true)
+      setAnswerStates({
+        isAnswered: false,
+        isCorrect: undefined,
+        isClosed: false
+      })
       const loseGame = checkNumberOfFails(maxFails, fails)
       if (loseGame) {
         console.log('lose');
@@ -58,7 +63,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
         history.push('/result')
       }
     }
-  }, [questionInfo.category, answerStates, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history])
+  }, [questionInfo.category, answerStates, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history, handleNextPlayerTurn, setAnswerStates])
 
   const handleScreen = () => {
     setScreen(screen => !screen)

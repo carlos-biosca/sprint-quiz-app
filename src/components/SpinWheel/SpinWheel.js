@@ -10,7 +10,7 @@ import './SpinWheel.css'
 
 export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleScreen }) {
   const { level, sessionToken, playersCards, turn } = useGame()
-  const { setAnswerStates, setQuestionInfo } = useQuestion()
+  const { setQuestionInfo } = useQuestion()
   const wheel = useRef(null)
   const wheelDegrees = useRef(0)
   const wheelNumber = useRef(undefined)
@@ -19,18 +19,12 @@ export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleSc
     wheelNumber.current = calculateWheelNumber(wheel, wheelDegrees)
 
     setTimeout(() => {
-      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn - 1].finalQuestion, wheelNumber.current)
+      getApiQuestion(setQuestionInfo, handleScreen, sessionToken.current, level, playersCards.current[turn.current - 1].finalQuestion, wheelNumber.current)
     }, 9000)
 
     setTimeout(() => {
       wheelNumber.current = undefined
     }, 10000)
-
-    setAnswerStates({
-      isAnswered: false,
-      isCorrect: undefined,
-      isClosed: false
-    })
     setScoreIsUpdated(false)
   }
 

@@ -9,7 +9,7 @@ export default function useProviderGame () {
     player3: 'P3',
     player4: 'P4'
   })
-  const [turn, setTurn] = useState(1)
+  const turn = useRef(1)
   const playersCards = useRef(null)
   const sessionToken = useRef('')
   const fails = useRef(0)
@@ -27,5 +27,11 @@ export default function useProviderGame () {
     setPlayersName({ ...playersName, [name]: value.trim() })
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails }
+  const handleNextPlayerTurn = () => {
+    if (turn.current === numberOfPlayers) turn.current = 1
+    else turn.current += 1
+    console.log(turn);
+  }
+
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn }
 }

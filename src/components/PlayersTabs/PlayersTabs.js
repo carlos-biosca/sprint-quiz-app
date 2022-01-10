@@ -3,8 +3,8 @@ import './PlayersTabs.css'
 import { useGame } from '../../contexts/gameContext';
 import { useQuestion } from '../../contexts/questionContext';
 
-export default function PlayersTabs ({ toggleTab, activeTab }) {
-  const { numberOfPlayers, playersCards, fails } = useGame()
+export default function PlayersTabs () {
+  const { numberOfPlayers, playersCards, fails, turn } = useGame()
   const { answerStates } = useQuestion()
 
   const cards = playersCards.current
@@ -16,8 +16,7 @@ export default function PlayersTabs ({ toggleTab, activeTab }) {
         cards && cards.map((card, index) => {
           return (
             <div key={index}
-              className={activeTab === index + 1 ? "game__tab game__tab--active" : "game__tab"}
-              onClick={() => toggleTab(index + 1)}
+              className={turn.current === index + 1 ? "game__tab game__tab--active" : "game__tab"}
             >
               <span className="game__name">{card.name}</span>
             </div>

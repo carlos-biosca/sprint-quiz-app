@@ -27,8 +27,8 @@ export default function Question ({ move, screen, handleGameIsOver }) {
 
     const correct = checkCorrectAnswer(answer, correct_answer)
 
-    if (playersCards.current[turn - 1].finalQuestion && correct === true) {
-      handleGameIsOver(true, Object.values(playersName)[turn - 1])
+    if (playersCards.current[turn.current - 1].finalQuestion && correct === true) {
+      handleGameIsOver(true, Object.values(playersName)[turn.current - 1])
       setTimeout(() => {
         history.push('/result')
       }, 500)

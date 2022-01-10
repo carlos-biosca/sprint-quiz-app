@@ -7,7 +7,7 @@
   --dark-grey: #2a2a2a;
   --purple: #5b518a;
   --sports: #ffbc41;
-  --entertainment: #e63c1e;
+  --entertainment: #f75134;
   --history: #f5ee30;
   --geography: #0ec5d6;
   --nature: #60f11c;
@@ -15,7 +15,7 @@
 
   --bg-gradient: linear-gradient(90deg, #5b518a, #9f95c1);
   --slot-gradient: linear-gradient(151deg, #d9d9d9 4.16%, #ffffff 88.11%);
-  --entertainment-gradient: linear-gradient(152.52deg, #e63c1e 20%, #e63c1e96);
+  --entertainment-gradient: linear-gradient(152.52deg, #f75134 20%, #e63c1e96);
   --history-gradient: linear-gradient(152.52deg, #f5ee30 20%, #fbf3055b);
   --geography-gradient: linear-gradient(152.52deg, #0ec5d6 20%, #51e9f7a9);
   --nature-gradient: linear-gradient(152.52deg, #60f11c 20%, #53f350a6);
