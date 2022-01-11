@@ -16,12 +16,11 @@ import Question from '../Question/Question'
 import generatePlayersRecords from '../../logic/generatePlayersRecords'
 import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
-import updateScore from '../../logic/updateScore'
 import checkNumberOfFails from '../../logic/checkNumberOfFails'
 
 export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const history = useHistory()
-  const { numberOfPlayers, playersName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn } = useGame()
+  const { numberOfPlayers, playersName, playersCards, sessionToken, turn, fails, handleUpdateScore } = useGame()
   const { questionInfo, answerStates, setAnswerStates } = useQuestion()
 
   const [screen, setScreen] = useState(false)
@@ -49,7 +48,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
 
   useEffect(() => {
     if (answerStates.isClosed && answerStates.isAnswered) {
-      updateScore(questionInfo.category, answerStates.isCorrect, playersCards, turn, fails, numberOfPlayers, handleNextPlayerTurn)
+      handleUpdateScore(questionInfo.category, answerStates.isCorrect)
       setScoreIsUpdated(true)
       setAnswerStates({
         isAnswered: false,
@@ -63,7 +62,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
         history.push('/result')
       }
     }
-  }, [questionInfo.category, answerStates, playersCards, turn, numberOfPlayers, fails, handleGameIsOver, history, handleNextPlayerTurn, setAnswerStates])
+  }, [answerStates, setAnswerStates, fails, handleGameIsOver, handleUpdateScore, history, questionInfo])
 
   const handleScreen = () => {
     setScreen(screen => !screen)

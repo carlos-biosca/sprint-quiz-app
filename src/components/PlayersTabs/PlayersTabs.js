@@ -1,11 +1,9 @@
 import './PlayersTabs.css'
 
 import { useGame } from '../../contexts/gameContext';
-import { useQuestion } from '../../contexts/questionContext';
 
 export default function PlayersTabs () {
   const { numberOfPlayers, playersCards, fails, turn } = useGame()
-  const { answerStates } = useQuestion()
 
   const cards = playersCards.current
   const numberOfFails = fails.current
@@ -25,7 +23,7 @@ export default function PlayersTabs () {
       }
       {
         numberOfPlayers === 1 && <div className='game__tab'>Fails:
-          <span className={answerStates.isClosed && !answerStates.isCorrect && answerStates.isAnswered ? 'game__fails game__fails--animation' : 'game__fails'}>
+          <span className='game__fails'>
             {numberOfFails}
           </span>
           /10

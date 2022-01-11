@@ -1,7 +1,9 @@
 .game__tabs {
+  position: relative;
   display: flex;
   height: 55px;
   background-color: transparent;
+  z-index: 30;
 }
 
 .game__tab {
@@ -37,8 +39,5 @@
   margin-left: 0.5em;
   margin-right: 0.1em;
   color: var(--entertainment);
-}
-
-.game__fails--animation {
-  animation: animatedBlink 0.7s ease 6;
+  font-weight: bold;
 }
