@@ -50,5 +50,17 @@ export default function useProviderGame () {
     console.log(turn);
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn, handleUpdateScore }
+  const handleSaveGameData = () => {
+    const gameData = [
+      playersName,
+      numberOfPlayers,
+      level,
+      playersCards.current,
+      turn.current,
+      fails.current
+    ]
+    localStorage.setItem('trivialGame', JSON.stringify(gameData))
+  }
+
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn, handleUpdateScore, handleSaveGameData }
 }
