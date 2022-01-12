@@ -1,4 +1,5 @@
 .modal-info {
+  justify-content: unset;
   background-color: var(--dark-white);
   overflow-y: scroll;
 }

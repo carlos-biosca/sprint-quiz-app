@@ -75,7 +75,7 @@
 }
 
 .game__piece--animation {
-  animation: animatedBlink 0.7s ease 6;
+  animation: animatedBlink 0.7s ease 4;
 }
 
 .game__final-question {

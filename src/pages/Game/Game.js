@@ -13,14 +13,13 @@ import SpinWheel from '../../components/SpinWheel/SpinWheel'
 import PlayersContainer from '../../components/PlayersContainer/PlayersContainer'
 import Question from '../Question/Question'
 
-import generatePlayersRecords from '../../logic/generatePlayersRecords'
 import retrieveSessionToken from '../../logic/retrieveSessionToken'
 import resetSessionToken from '../../logic/resetSessionToken'
 import checkNumberOfFails from '../../logic/checkNumberOfFails'
 
 export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const history = useHistory()
-  const { numberOfPlayers, playersName, playersCards, sessionToken, turn, fails, handleUpdateScore } = useGame()
+  const { sessionToken, fails, handleUpdateScore, handleGeneratePlayersRecords, newGame } = useGame()
   const { questionInfo, answerStates, setAnswerStates } = useQuestion()
 
   const [screen, setScreen] = useState(false)
@@ -28,9 +27,9 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   const [transition, setTransition] = useState(true)
 
   useEffect(() => {
-    generatePlayersRecords(playersName, numberOfPlayers, playersCards, fails, turn)
+    if (newGame.current) handleGeneratePlayersRecords()
     setTransition(false)
-  }, [playersName, numberOfPlayers, playersCards, fails, turn])
+  }, [handleGeneratePlayersRecords, newGame])
 
   useEffect(() => {
     const getApiToken = async () => {

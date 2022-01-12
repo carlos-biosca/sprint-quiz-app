@@ -16,6 +16,7 @@ export default function useProviderGame () {
   const playersCards = useRef(null)
   const sessionToken = useRef('')
   const fails = useRef(0)
+  const newGame = useRef(true)
 
   const handleChangeLevel = (str) => {
     setLevel(str)
@@ -62,5 +63,37 @@ export default function useProviderGame () {
     localStorage.setItem('trivialGame', JSON.stringify(gameData))
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn, handleUpdateScore, handleSaveGameData }
+  const handleLoadGameData = (data) => {
+    setPlayersName(data[0])
+    setNumberOfPlayers(data[1])
+    setLevel(data[2])
+    playersCards.current = data[3]
+    turn.current = data[4]
+    fails.current = data[5]
+  }
+
+  const handleGeneratePlayersRecords = () => {
+    let cards = []
+    const names = Object.values(playersName).slice(0, numberOfPlayers)
+    for (let name of names) {
+      const card = {
+        name,
+        records: {
+          entertainment: false,
+          history: false,
+          geography: false,
+          science: false,
+          sports: false,
+          art: false
+        },
+        finalQuestion: false
+      }
+      cards.push(card)
+    }
+    playersCards.current = cards
+    fails.current = 0
+    turn.current = 1
+  }
+
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn, handleUpdateScore, handleSaveGameData, handleLoadGameData, handleGeneratePlayersRecords, newGame }
 }

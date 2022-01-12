@@ -18,7 +18,7 @@
 .storage-modal__text {
   margin-bottom: 1em;
   font-size: 1.5rem;
-  color: var(--dark-white);
+  color: var(--nature);
 }
 
 .storage-modal__action {
@@ -45,5 +45,5 @@
 }
 
 .storage-modal__button--right {
-  margin-right: 10%;
+  margin-right: 25%;
 }
