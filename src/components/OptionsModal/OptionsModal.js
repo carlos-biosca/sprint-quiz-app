@@ -11,7 +11,7 @@ import OptionsButton from '../OptionsButton/OptionsButton'
 import StorageModal from '../StorageModal/StorageModal'
 import LoadModal from '../LoadModal/LoadModal'
 
-export default function OptionsModal ({ closeModal, handleGameIsReady }) {
+export default function OptionsModal ({ closeModal, handleGameIsReady, anyDataStoraged, handleIsGameSaved }) {
   const history = useHistory()
   const { newGame } = useGame()
   const [saveGameModal, setSaveGameModal] = useState(false)
@@ -48,10 +48,10 @@ export default function OptionsModal ({ closeModal, handleGameIsReady }) {
         <OptionsButton color={'orange'} image={exit} action={handleExitGame} text={'Exit Game'} />
       </div>
       {
-        saveGameModal && <StorageModal closeModal={handleToggleSaveGameModal} />
+        saveGameModal && <StorageModal closeModal={handleToggleSaveGameModal} handleIsGameSaved={handleIsGameSaved} />
       }
       {
-        loadGameModal && <LoadModal closeModal={handleToggleLoadGameModal} restart={handleRestartGame} />
+        loadGameModal && <LoadModal closeModal={handleToggleLoadGameModal} restart={handleRestartGame} anyDataStoraged={anyDataStoraged} />
       }
     </div>
   )

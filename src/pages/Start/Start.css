@@ -5,6 +5,23 @@
   transition: transform 0.35s linear;
 }
 
+.start__options {
+  position: absolute;
+  top: 41px;
+  right: 32px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--dark-white);
+  background-image: url(../../assets/icons/loading.png);
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: center;
+}
+
+.start__options:active {
+  border: 2px solid var(--black);
+}
+
 .start.move-left {
   transform: translateX(-100%);
   transition: transform 0.35s linear;

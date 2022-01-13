@@ -95,5 +95,5 @@ export default function useProviderGame () {
     turn.current = 1
   }
 
-  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn, handleUpdateScore, handleSaveGameData, handleLoadGameData, handleGeneratePlayersRecords, newGame }
+  return { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, playersCards, sessionToken, turn, fails, handleNextPlayerTurn, handleUpdateScore, handleSaveGameData, handleLoadGameData, handleGeneratePlayersRecords, newGame, setPlayersName }
 }

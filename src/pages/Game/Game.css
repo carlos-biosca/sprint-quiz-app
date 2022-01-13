@@ -4,8 +4,7 @@
   background: var(--bg-gradient);
 }
 
-.game__options,
-.start__options {
+.game__options {
   position: absolute;
   top: 41px;
   right: 32px;

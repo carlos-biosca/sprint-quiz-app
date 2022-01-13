@@ -12,7 +12,16 @@ import { useGame } from '../../contexts/gameContext';
 
 export default function Select ({ move, screen, openInfo, handleGameIsReady }) {
   const history = useHistory()
-  const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName } = useGame()
+  const { level, handleChangeLevel, numberOfPlayers, handleChangeNumberOfPLayers, playersName, handleChangeName, newGame, setPlayersName } = useGame()
+
+  useEffect(() => {
+    setPlayersName({
+      player1: 'P1',
+      player2: 'P2',
+      player3: 'P3',
+      player4: 'P4'
+    })
+  }, [setPlayersName])
 
   useEffect(() => {
     return () => {
@@ -22,6 +31,7 @@ export default function Select ({ move, screen, openInfo, handleGameIsReady }) {
 
   const handleStartGame = () => {
     handleGameIsReady()
+    newGame.current = true
     setTimeout(() => {
       history.push('/game')
     }, 1000)

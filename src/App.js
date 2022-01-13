@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +28,13 @@ function App () {
     isOver: false,
     winner: undefined
   })
+  const [anyDataStoraged, setAnyDataStoraged] = useState(true)
+
+  useEffect(() => {
+    if (!JSON.parse(localStorage.getItem('trivialGame'))) {
+      handleIsGameSaved(false)
+    }
+  }, [])
 
   const handleToggleOptions = () => {
     setOptions(options => !options)
@@ -48,19 +55,23 @@ function App () {
     })
   }
 
+  const handleIsGameSaved = (value) => {
+    setAnyDataStoraged(value)
+  }
+
   return (
     <div className="App">
       <ProviderGame>
         <Router>
           {
-            options && <OptionsModal closeModal={handleToggleOptions} handleGameIsReady={handleGameIsReady} />
+            options && <OptionsModal closeModal={handleToggleOptions} handleGameIsReady={handleGameIsReady} anyDataStoraged={anyDataStoraged} handleIsGameSaved={handleIsGameSaved} />
           }
           {
             info && <InfoModal closeModal={handleToggleInfo} />
           }
           <Switch>
             <Route exact path="/">
-              <Start screen={screen} move={setScreen} openOptions={handleToggleOptions} />
+              <Start screen={screen} move={setScreen} handleGameIsReady={handleGameIsReady} anyDataStoraged={anyDataStoraged} />
               <Select screen={screen} move={setScreen} openInfo={handleToggleInfo} handleGameIsReady={handleGameIsReady} />
             </Route>
             <ProtectedRoute path="/game" game={gameIsReady} redirectTo='/'>

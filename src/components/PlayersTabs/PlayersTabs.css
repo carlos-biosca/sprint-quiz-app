@@ -25,6 +25,7 @@
 .game__tab--active {
   background-color: var(--dark-white);
   color: var(--black);
+  font-weight: 500;
 }
 
 .game__name {

@@ -37,7 +37,6 @@ export default function Question ({ move, screen, handleGameIsOver }) {
         ...answerStates, isAnswered: true, isCorrect: correct
       })
     }
-
   }
 
   const handleCloseQuestion = (e) => {

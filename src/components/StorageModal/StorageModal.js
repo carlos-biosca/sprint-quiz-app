@@ -6,13 +6,14 @@ import Button from '../Button/Button'
 
 import { useGame } from '../../contexts/gameContext'
 
-export default function StorageModal ({ closeModal }) {
+export default function StorageModal ({ closeModal, handleIsGameSaved }) {
   const { handleSaveGameData } = useGame()
-  const [gameIsSaved, setGameIsSaved] = useState(false)
+  const [gameSaved, setGameSaved] = useState(false)
 
   const saveAndClose = () => {
     handleSaveGameData()
-    setGameIsSaved(true)
+    handleIsGameSaved(true)
+    setGameSaved(true)
     setTimeout(() => {
       closeModal()
     }, 2000)
@@ -22,7 +23,7 @@ export default function StorageModal ({ closeModal }) {
     <div className='storage-modal'>
       <div className="storage-modal__container">
         {
-          gameIsSaved ? (
+          gameSaved ? (
             <p className='storage-modal__action'>GAME SAVED</p>
           ) : (
             <>
