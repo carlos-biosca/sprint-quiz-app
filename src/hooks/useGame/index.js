@@ -48,7 +48,7 @@ export default function useProviderGame () {
   const handleNextPlayerTurn = () => {
     if (turn.current === numberOfPlayers) turn.current = 1
     else turn.current += 1
-    console.log(turn);
+    console.log(`Player${turn.current} turn`);
   }
 
   const handleSaveGameData = () => {

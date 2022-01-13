@@ -33,11 +33,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 button {
   border: none;
   outline: none;
@@ -60,14 +55,9 @@ ol {
   margin-bottom: 0;
 }
 
-@keyframes animatedBlink {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  body {
+    max-width: 1024px;
   }
 }

@@ -13,3 +13,11 @@
   line-height: 28px;
   border-radius: 10px;
 }
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .button {
+    padding: 25px 52px;
+    font-size: 50px;
+  }
+}
