@@ -29,6 +29,7 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
   useEffect(() => {
     if (newGame.current) handleGeneratePlayersRecords()
     setTransition(false)
+    newGame.current = false
   }, [handleGeneratePlayersRecords, newGame])
 
   useEffect(() => {

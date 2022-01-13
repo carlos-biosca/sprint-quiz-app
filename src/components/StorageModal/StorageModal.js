@@ -27,7 +27,7 @@ export default function StorageModal ({ closeModal, handleIsGameSaved }) {
             <p className='storage-modal__action'>GAME SAVED</p>
           ) : (
             <>
-              <p className='storage-modal__text'>Save current game data ?</p>
+              <p className='storage-modal__text storage-modal__text--green'>Save current game data ?</p>
               <div className="storage-modal__options">
                 <Button labelAria={'save game'} classes='storage-modal__button storage-modal__button--right' action={saveAndClose} text='YES' />
                 <Button labelAria={'close save game modal'} classes='storage-modal__button' action={closeModal} text='NO' />

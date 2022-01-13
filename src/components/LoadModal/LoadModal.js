@@ -25,11 +25,11 @@ export default function LoadModal ({ closeModal, restart, anyDataStoraged }) {
 
   return (
     <div className='storage-modal'>
-      <div className="storage-modal__container load-modal__container">
+      <div className="storage-modal__container">
         {
           anyDataStoraged ? (
             <>
-              <p className='storage-modal__text load-modal__text'>Load saved game data ?</p>
+              <p className='storage-modal__text load-modal__text--blue'>Load saved game data ?</p>
               <div className="storage-modal__options">
                 <Button labelAria={'save game'} classes='storage-modal__button storage-modal__button--right' action={loadGameData} text='YES' />
                 <Button labelAria={'close save game modal'} classes='storage-modal__button' action={closeModal} text='NO' />

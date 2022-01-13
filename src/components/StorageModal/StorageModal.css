@@ -10,21 +10,24 @@
 .storage-modal__container {
   position: relative;
   width: 100%;
-  height: 168.78px;
-  padding: 2em 1em;
+  height: 190.78px;
+  padding: 3em 1em;
   background-color: var(--dark-grey);
 }
 
 .storage-modal__text {
   margin-bottom: 1em;
   font-size: 1.5rem;
+}
+
+.storage-modal__text--green {
   color: var(--nature);
 }
 
 .storage-modal__action {
   font-size: 2.5rem;
   font-weight: bold;
-  line-height: 100px;
+  line-height: 92px;
   color: var(--white);
 }
 
