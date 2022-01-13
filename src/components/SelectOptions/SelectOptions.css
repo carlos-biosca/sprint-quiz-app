@@ -1,7 +1,7 @@
 .select__input {
   display: flex;
   justify-content: space-between;
-  width: 242px;
+  width: 79.34%;
   height: 36px;
   border: 2px solid var(--black);
 }
@@ -10,6 +10,7 @@
 .select__right-arrow {
   width: 32px;
   background-color: var(--white);
+  background-repeat: no-repeat;
 }
 
 .select__left-arrow {
@@ -37,4 +38,16 @@
 
 .select__option--show {
   opacity: 1;
+}
+
+@media only screen and (min-width: 425px) {
+  .select__input {
+    height: 50px;
+    padding-top: 7px;
+  }
+
+  .select__option {
+    padding-top: 0;
+    font-size: 25px;
+  }
 }

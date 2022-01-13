@@ -20,4 +20,9 @@
     padding: 25px 52px;
     font-size: 50px;
   }
+
+  .button--play {
+    font-size: 40px;
+    padding: 22px 40px;
+  }
 }
