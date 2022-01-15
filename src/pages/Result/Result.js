@@ -55,7 +55,7 @@ export default function Result ({ handleGameIsReady, handleGameIsOver, winner })
           )
         }
       </div>
-      <div className="modal-options__container result__options result__options--animation">
+      <div className=" result__options result__options--animation">
         <OptionsButton color={'red'} image={restart} action={handleRestartGame} text={'Restart Game'} />
         <OptionsButton color={'orange'} image={exit} action={handleExitGame} text={'Exit Game'} />
       </div>

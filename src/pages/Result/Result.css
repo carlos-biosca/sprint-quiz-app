@@ -52,3 +52,16 @@
     transform: translateY(0%);
   }
 }
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .result__title {
+    font-size: 110px;
+    margin-bottom: 10%;
+  }
+
+  .result__options {
+    width: 65%;
+    bottom: 10%;
+  }
+}
