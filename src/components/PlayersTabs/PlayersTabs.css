@@ -11,7 +11,6 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  max-width: 50%;
   height: 100%;
   background-color: var(--dark-grey);
   color: var(--dark-white);
@@ -41,4 +40,16 @@
   margin-right: 0.1em;
   color: var(--entertainment);
   font-weight: bold;
+}
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .game__tabs {
+    height: 100px;
+  }
+
+  .game__tab {
+    font-size: 2.2rem;
+    line-height: 30px;
+  }
 }

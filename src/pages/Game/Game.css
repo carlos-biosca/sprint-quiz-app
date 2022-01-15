@@ -7,10 +7,11 @@
 .game__options {
   position: absolute;
   top: 41px;
-  right: 32px;
+  right: 5%;
   width: 32px;
   height: 32px;
   background-image: url(../../assets/icons/option.png);
+  background-size: cover;
   z-index: 20;
 }
 
@@ -37,4 +38,12 @@
 
 .game__transition.move-right {
   transform: translateX(0%);
+}
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .game__options {
+    width: 40px;
+    height: 40px;
+  }
 }

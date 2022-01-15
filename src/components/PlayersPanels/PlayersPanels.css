@@ -97,3 +97,16 @@
   transition: transform 0.75s ease 2s;
   opacity: 1;
 }
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .game__pieces {
+    width: 75%;
+    height: 77%;
+    margin-bottom: 2.5em;
+  }
+
+  .game__piece img {
+    width: 45%;
+  }
+}

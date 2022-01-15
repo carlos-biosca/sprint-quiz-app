@@ -159,3 +159,31 @@
   100% {
   }
 }
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .wheel__container {
+    left: calc(50% - 225px);
+    width: 450px;
+    height: 450px;
+  }
+
+  .wheel__score {
+    clip-path: polygon(106% 0%, 60% 73%, 40% 73%, -2% 0%);
+  }
+
+  .wheel__wrap::before,
+  .wheel__wrap::after {
+    top: 163px;
+  }
+
+  .wheel__wrap::before {
+    left: 100px;
+    border-left-width: 25px;
+  }
+
+  .wheel__wrap::after {
+    left: 83px;
+    border-right-width: 25px;
+  }
+}
