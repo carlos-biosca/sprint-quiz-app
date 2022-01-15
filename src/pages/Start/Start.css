@@ -96,6 +96,11 @@
     font-size: 115px;
   }
 
+  .start__options {
+    width: 70px;
+    height: 70px;
+  }
+
   .icon {
     width: 100px;
     height: 100px;

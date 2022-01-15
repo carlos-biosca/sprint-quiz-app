@@ -1,7 +1,6 @@
 .modal-info {
   justify-content: unset;
   background-color: var(--dark-white);
-  overflow-y: scroll;
 }
 
 .modal-info__title {
@@ -54,7 +53,6 @@
   align-items: center;
   flex: 1;
   font-size: 24px;
-  line-height: 28px;
 }
 
 .modal-info__rule {
@@ -71,4 +69,33 @@
   font-size: 22px;
   line-height: 32px;
   text-align: left;
+}
+
+/* Tablet  */
+@media only screen and (min-width: 425px) {
+  .modal-info__title {
+    margin-bottom: 35px;
+  }
+
+  .modal-info__section {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .modal-info__record {
+    height: 95px;
+  }
+
+  .modal-info__piece {
+    width: 80px;
+  }
+
+  .modal-info__piece img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .modal-info__category {
+    font-size: 35px;
+  }
 }

@@ -7,7 +7,7 @@
 .game__options {
   position: absolute;
   top: 41px;
-  right: 5%;
+  right: 28px;
   width: 32px;
   height: 32px;
   background-image: url(../../assets/icons/option.png);
@@ -17,7 +17,7 @@
 
 .game__info {
   top: 101px;
-  right: 28px;
+  right: 25px;
   border: 2px solid var(--black);
   animation: animatedBlink 0.7s ease 6 3.5s;
 }
@@ -43,7 +43,12 @@
 /* Tablet  */
 @media only screen and (min-width: 425px) {
   .game__options {
+    right: 5%;
     width: 40px;
     height: 40px;
+  }
+
+  .game__info {
+    right: 29px;
   }
 }

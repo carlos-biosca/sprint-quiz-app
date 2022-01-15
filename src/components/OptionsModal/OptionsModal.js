@@ -38,21 +38,23 @@ export default function OptionsModal ({ closeModal, handleGameIsReady, anyDataSt
   }
 
   return (
-    <div className="modal modal-options">
-      <div className="game__options modal__close" onClick={closeModal}></div>
-      <h2 className='modal-options__title'>GAME OPTIONS</h2>
-      <div className="modal-options__container">
-        <OptionsButton color={'red'} image={restart} action={() => handleRestartGame(true)} text={'Restart Game'} />
-        <OptionsButton color={'green'} image={save} action={handleToggleSaveGameModal} text={'Save Game'} />
-        <OptionsButton color={'blue'} image={load} action={handleToggleLoadGameModal} text={'Load Game'} />
-        <OptionsButton color={'orange'} image={exit} action={handleExitGame} text={'Exit Game'} />
+    <div className="modal__background">
+      <div className="modal modal-options">
+        <div className="game__options modal__close" onClick={closeModal}></div>
+        <h2 className='modal-options__title'>GAME OPTIONS</h2>
+        <div className="modal-options__container">
+          <OptionsButton color={'red'} image={restart} action={() => handleRestartGame(true)} text={'Restart Game'} />
+          <OptionsButton color={'green'} image={save} action={handleToggleSaveGameModal} text={'Save Game'} />
+          <OptionsButton color={'blue'} image={load} action={handleToggleLoadGameModal} text={'Load Game'} />
+          <OptionsButton color={'orange'} image={exit} action={handleExitGame} text={'Exit Game'} />
+        </div>
+        {
+          saveGameModal && <StorageModal closeModal={handleToggleSaveGameModal} handleIsGameSaved={handleIsGameSaved} />
+        }
+        {
+          loadGameModal && <LoadModal closeModal={handleToggleLoadGameModal} restart={handleRestartGame} anyDataStoraged={anyDataStoraged} />
+        }
       </div>
-      {
-        saveGameModal && <StorageModal closeModal={handleToggleSaveGameModal} handleIsGameSaved={handleIsGameSaved} />
-      }
-      {
-        loadGameModal && <LoadModal closeModal={handleToggleLoadGameModal} restart={handleRestartGame} anyDataStoraged={anyDataStoraged} />
-      }
     </div>
   )
 }
