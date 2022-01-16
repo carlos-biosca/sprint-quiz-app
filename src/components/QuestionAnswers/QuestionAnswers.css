@@ -60,7 +60,7 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .question__form-label {
     min-height: 90px;
   }

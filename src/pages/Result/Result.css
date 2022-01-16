@@ -54,7 +54,7 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .result__title {
     font-size: 110px;
     margin-bottom: 10%;

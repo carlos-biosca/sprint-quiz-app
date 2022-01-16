@@ -24,7 +24,7 @@
 }
 
 .select__title {
-  margin-top: 46px;
+  margin-top: 12%;
   color: var(--white);
   font-size: 36px;
   line-height: 42px;
@@ -107,9 +107,9 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .select__title {
-    margin-top: 75px;
+    margin-top: 10%;
     font-size: 50px;
   }
 

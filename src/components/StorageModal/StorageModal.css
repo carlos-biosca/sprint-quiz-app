@@ -52,7 +52,7 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .storage-modal__container {
     max-width: 500px;
   }

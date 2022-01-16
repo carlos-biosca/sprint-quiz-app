@@ -86,7 +86,7 @@ export default function useProviderGame () {
           sports: false,
           art: false
         },
-        finalQuestion: true
+        finalQuestion: false
       }
       cards.push(card)
     }

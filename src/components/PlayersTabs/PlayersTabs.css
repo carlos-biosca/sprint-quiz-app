@@ -43,7 +43,7 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .game__tabs {
     height: 100px;
   }

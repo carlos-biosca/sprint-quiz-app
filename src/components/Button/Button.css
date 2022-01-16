@@ -15,7 +15,7 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .button {
     padding: 25px 52px;
     font-size: 50px;

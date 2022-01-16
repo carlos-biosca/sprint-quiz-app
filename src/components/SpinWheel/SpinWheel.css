@@ -161,7 +161,7 @@
 }
 
 /* Tablet  */
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 768px) {
   .wheel__container {
     left: calc(50% - 225px);
     width: 450px;
