@@ -26,3 +26,21 @@
     padding: 22px 40px;
   }
 }
+
+/* Desktop */
+@media only screen and (min-width: 1440px) {
+  .button {
+    transition: opacity 0.35s ease;
+    transition-delay: 1.35s;
+  }
+
+  .button:hover {
+    background-color: var(--dark-grey);
+    color: var(--dark-white);
+  }
+
+  .button--play {
+    background-color: var(--dark-white);
+    color: var(--purple);
+  }
+}

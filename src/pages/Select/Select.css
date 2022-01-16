@@ -152,3 +152,52 @@
     font-size: 20px;
   }
 }
+
+/* Desktop */
+@media only screen and (min-width: 1440px) {
+  .select {
+    width: 50%;
+    transform: translateX(200%);
+    background-color: var(--purple);
+    transition: transform 1s linear;
+    z-index: 30;
+  }
+
+  .select::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+
+  .select.move-left {
+    transform: translateX(50%);
+    transition: transform 1s linear;
+    transition-delay: 1s;
+  }
+
+  .select__back,
+  .select__info {
+    cursor: pointer;
+  }
+
+  .select__back {
+    background-image: url("../../assets/icons/close.png");
+    background-size: 25px 25px;
+  }
+
+  .select__back:hover,
+  .select__info:hover {
+    filter: invert(0.8);
+  }
+
+  .select__header {
+    background-image: unset;
+  }
+
+  .select__title {
+    margin-top: 55px;
+  }
+
+  .select__form {
+    top: 156px;
+  }
+}

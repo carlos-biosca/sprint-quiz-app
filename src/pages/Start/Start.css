@@ -35,8 +35,8 @@
   font-weight: 700;
   line-height: 101.64px;
   color: var(--black);
-  text-shadow: -5px -5px 0 var(--purple), 5px -5px 0 var(--purple),
-    -5px 5px 0 var(--purple), 5px 5px 0 var(--purple);
+  text-shadow: -3px -3px 0 var(--purple), 3px -3px 0 var(--purple),
+    -3px 3px 0 var(--purple), 3px 3px 0 var(--purple);
   z-index: 10;
 }
 
@@ -92,10 +92,14 @@
 /* Tablet  */
 @media only screen and (min-width: 768px) {
   .start__title {
-    padding-left: 1em;
-    padding-right: 1em;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 160px;
-    line-height: 145px;
+    line-height: 160px;
+    text-shadow: -5px -5px 0 var(--purple), 5px -5px 0 var(--purple),
+      -5px 5px 0 var(--purple), 5px 5px 0 var(--purple);
+    z-index: 10;
   }
 
   .start__options {
@@ -127,34 +131,62 @@
     top: 60%;
     right: 10%;
   }
-
-  .start__container {
-    border-radius: unset;
-  }
 }
 
 /* Desktop */
 @media only screen and (min-width: 1440px) {
   .start__title {
+    max-width: 700px;
     padding-top: 150px;
-    padding-left: 2em;
-    padding-right: 2em;
     font-size: 200px;
-    line-height: 233px;
-    text-shadow: -10px -10px 0 var(--purple), 10px -10px 0 var(--purple),
-      -10px 10px 0 var(--purple), 10px 10px 0 var(--purple);
+    line-height: 200px;
+    text-align: center;
   }
 
   .icon {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
   }
 
   .icon__monalisa {
-    left: 23%;
+    left: 30%;
   }
 
   .icon__scroll {
+    top: 38%;
     left: 60%;
+  }
+
+  .start__options {
+    right: 75px;
+    cursor: pointer;
+  }
+
+  .start__options:hover {
+    filter: invert(0.8);
+  }
+
+  .start__options:active {
+    border: unset;
+  }
+
+  .start.move-left {
+    transform: none;
+    transition: none;
+  }
+
+  .start__container {
+    transition: height 0.7s linear 1s, border-radius 0.7s linear 1s;
+  }
+
+  .start.move-left .start__container {
+    height: 100%;
+    border-radius: 0;
+    transition-delay: 0s;
+  }
+
+  .start.move-left .start__container .button {
+    transition: opacity 0.35s ease;
+    opacity: 0;
   }
 }
