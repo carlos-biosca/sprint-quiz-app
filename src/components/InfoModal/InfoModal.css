@@ -3,6 +3,11 @@
   background-color: var(--dark-white);
 }
 
+.modal-info__close:hover {
+  filter: invert(34%) sepia(12%) saturate(2021%) hue-rotate(210deg)
+    brightness(92%) contrast(88%);
+}
+
 .modal-info__title {
   margin-top: 100px;
   margin-bottom: 20px;

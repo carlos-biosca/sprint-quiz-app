@@ -176,7 +176,7 @@
   }
 
   .start__container {
-    transition: height 0.7s linear 1s, border-radius 0.7s linear 1s;
+    transition: height 0.35s linear 0.5s, border-radius 0.3s linear 0.5s;
   }
 
   .start.move-left .start__container {

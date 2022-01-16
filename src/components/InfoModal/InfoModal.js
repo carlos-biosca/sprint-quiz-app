@@ -7,7 +7,7 @@ export default function InfoModal ({ closeModal }) {
   return (
     <div className="modal__background">
       <div className='modal modal-info'>
-        <div className="game__options modal__close" onClick={closeModal}></div>
+        <div className="game__options modal__close modal-info__close" onClick={closeModal}></div>
         <h2 className='modal-info__title'>Categories</h2>
         <section className="modal-info__section">
           <div className="modal-info__record">

@@ -8,6 +8,10 @@
   margin-bottom: 15px;
 }
 
+.question__form-label:hover {
+  cursor: pointer;
+}
+
 .question__form-label:last-of-type {
   margin-bottom: 20px;
 }

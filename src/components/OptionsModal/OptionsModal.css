@@ -25,7 +25,7 @@
 }
 
 .modal-options {
-  background-image: var(--bg-gradient);
+  background-color: var(--purple);
 }
 
 .modal-options__title {
@@ -44,10 +44,23 @@
 @media only screen and (min-width: 768px) {
   .modal {
     width: 80%;
+    max-width: 660px;
   }
 
   .modal-options {
     height: auto;
     padding: 4em;
+  }
+}
+
+/* Desktop  */
+@media only screen and (min-width: 1440px) {
+  .modal {
+    width: 50%;
+  }
+
+  .modal::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
   }
 }

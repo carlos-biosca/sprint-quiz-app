@@ -59,3 +59,17 @@
     height: 110px;
   }
 }
+
+/* Desktop */
+@media only screen and (min-width: 1440px) {
+  .transition {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    height: 100%;
+  }
+
+  .transition__icon {
+    width: 150px;
+    height: 150px;
+  }
+}

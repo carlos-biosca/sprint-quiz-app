@@ -1,16 +1,22 @@
 .select {
-  position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  top: 0;
-  transform: translateX(100%);
-  background-color: var(--dark-white);
-  transition: transform 0.35s linear;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
-.select.move-left {
+.select__background {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateX(100%);
+  transition: transform 0.35s linear;
+  background-color: var(--dark-white);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 30;
+}
+
+.select__background.move-left {
   transform: translateX(0%);
   transition: transform 0.35s linear;
 }
@@ -157,21 +163,20 @@
 @media only screen and (min-width: 1440px) {
   .select {
     width: 50%;
-    transform: translateX(200%);
+    margin-left: auto;
+    margin-right: auto;
     background-color: var(--purple);
-    transition: transform 1s linear;
-    z-index: 30;
+    transition: transform 0.5s linear;
   }
 
-  .select::-webkit-scrollbar {
-    display: none;
-    scrollbar-width: none;
+  .select__background {
+    background-color: var(--purple);
   }
 
-  .select.move-left {
-    transform: translateX(50%);
-    transition: transform 1s linear;
-    transition-delay: 1s;
+  .select__background.move-left {
+    transform: translateX(0%);
+    transition: transform 0.5s linear;
+    transition-delay: 0.35s;
   }
 
   .select__back,
@@ -199,5 +204,6 @@
 
   .select__form {
     top: 156px;
+    width: 40%;
   }
 }

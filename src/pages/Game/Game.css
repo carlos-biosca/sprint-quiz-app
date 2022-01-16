@@ -72,10 +72,12 @@
     background-color: var(--purple);
     font-size: 5rem;
     color: var(--soft-purple);
+    z-index: 30;
   }
 
   .game__options {
     cursor: pointer;
+    z-index: 40;
   }
 
   .game__options:hover {
@@ -85,5 +87,6 @@
   .game__info {
     top: 33px;
     right: 120px;
+    z-index: 40;
   }
 }

@@ -23,6 +23,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 110px;
   margin-bottom: 2em;
   padding-left: 0.8em;
   padding-right: 0.8em;
@@ -76,7 +77,7 @@
 /* Tablet  */
 @media only screen and (min-width: 768px) {
   .question__header {
-    height: 20%;
+    min-height: 200px;
   }
 
   .question__title {
@@ -91,5 +92,18 @@
   .question__text {
     font-size: 30px;
     line-height: 40px;
+  }
+}
+
+/* Desktop  */
+@media only screen and (min-width: 1440px) {
+  .question {
+    width: 50%;
+    transform: translateX(200%);
+  }
+
+  .question.move-left {
+    transform: translateX(100%);
+    transition: transform 0.35s linear;
   }
 }
