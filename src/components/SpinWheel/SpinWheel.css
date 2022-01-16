@@ -1,6 +1,6 @@
 .wheel__container {
   position: relative;
-  top: 41px;
+  top: 5.08%;
   left: -38.6%;
   width: 360px;
   height: 360px;
@@ -163,27 +163,37 @@
 /* Tablet  */
 @media only screen and (min-width: 768px) {
   .wheel__container {
-    left: calc(50% - 225px);
-    width: 450px;
-    height: 450px;
+    left: calc(50% - 300px);
+    width: 600px;
+    height: 600px;
   }
 
   .wheel__score {
-    clip-path: polygon(106% 0%, 60% 73%, 40% 73%, -2% 0%);
+    clip-path: polygon(99% 0%, 57% 80%, 43% 80%, -6% 0%);
+  }
+
+  .wheel__wrap {
+    width: 300px;
+    left: calc(50% - 150px);
   }
 
   .wheel__wrap::before,
   .wheel__wrap::after {
-    top: 163px;
+    top: 238px;
   }
 
   .wheel__wrap::before {
-    left: 100px;
+    left: 145px;
     border-left-width: 25px;
   }
 
   .wheel__wrap::after {
-    left: 83px;
+    left: 127px;
     border-right-width: 25px;
+  }
+
+  .wheel__center {
+    width: 75px;
+    height: 75px;
   }
 }

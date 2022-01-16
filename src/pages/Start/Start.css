@@ -92,8 +92,10 @@
 /* Tablet  */
 @media only screen and (min-width: 768px) {
   .start__title {
-    padding-top: 300px;
-    font-size: 115px;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 160px;
+    line-height: 145px;
   }
 
   .start__options {
@@ -144,7 +146,15 @@
   }
 
   .icon {
-    width: 186px;
-    height: 186px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .icon__monalisa {
+    left: 23%;
+  }
+
+  .icon__scroll {
+    left: 60%;
   }
 }

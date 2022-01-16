@@ -4,17 +4,17 @@ Aplicación Front-End con React. Juego de preguntas y respuestas con competitivo
 
 ## Preview
 
-#### Diseño Mobil
+#### Diseño inicial para Mobil
 
 ![Mobile Design](./src/design/mobile-design.png)
 <br>
 
-#### Diseño Escritorio
+#### Diseño inicial para Escritorio
 
 ![Desktop Design](./src/design/desktop-design.png)
 <br>
 
-## Tecnologias
+## Tecnologías
 
 - FIGMA para el diseño de la App
 - [REACT](https://es.reactjs.org/)
@@ -40,7 +40,11 @@ npm run build
 
 1. Crear un juego de preguntas y respuestas con REACT usando la API [Open Trivia Database](https://opentdb.com/).
 
-2. La aplicación será **responsive** para todos los dispositivos (mobil, tablet, desktop).
+2. La aplicación será **responsive**:
+
+> - iPhone X ( 375px )
+> - iPad ( 768px )
+> - Desktop ( 1440px )
 
 3. Modo de juego para una solo jugador, y multijugador de **hasta 4 jugadores** en local.
 
