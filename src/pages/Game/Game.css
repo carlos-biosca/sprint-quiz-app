@@ -1,7 +1,12 @@
 .game {
   position: relative;
+  display: grid;
   height: 100vh;
   background: var(--bg-gradient);
+}
+
+.game__column--desktop {
+  display: none;
 }
 
 .game__options {
@@ -43,12 +48,42 @@
 /* Tablet  */
 @media only screen and (min-width: 768px) {
   .game__options {
-    right: 5%;
+    right: 50px;
     width: 40px;
     height: 40px;
   }
 
   .game__info {
-    right: 4.3%;
+    right: 45px;
+  }
+}
+
+/* Desktop  */
+@media only screen and (min-width: 1440px) {
+  .game {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .game__column--desktop {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--purple);
+    font-size: 5rem;
+    color: var(--soft-purple);
+  }
+
+  .game__options {
+    cursor: pointer;
+  }
+
+  .game__options:hover {
+    filter: invert(1);
+  }
+
+  .game__info {
+    top: 33px;
+    right: 120px;
   }
 }

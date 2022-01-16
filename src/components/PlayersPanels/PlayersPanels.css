@@ -1,15 +1,13 @@
 .game__records {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: calc(100% - 55px);
   background-color: var(--dark-white);
 }
 
 .game__record {
   position: absolute;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: calc(100% - 55px);
   transform: translateX(100%);
@@ -108,5 +106,19 @@
 
   .game__piece img {
     width: 80px;
+  }
+}
+
+/* Desktop  */
+@media only screen and (min-width: 1440px) {
+  .game__pieces {
+    grid-template-columns: repeat(6, 110px);
+    grid-template-rows: 1fr;
+    width: 660px;
+    height: 50%;
+  }
+
+  .game__piece img {
+    width: 60px;
   }
 }

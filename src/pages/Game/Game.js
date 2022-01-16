@@ -70,13 +70,18 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
 
   return (
     <div className='game'>
-      <div className="game__options" onClick={openOptions} />
-      <div className="select__info game__info" onClick={openInfo} />
-      <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} handleScreen={handleScreen} />
-      <PlayersContainer />
-      <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
-      <div className={transition ? 'game__transition move-right' : 'game__transition'}>
-        <TransitionBackground />
+      <div className="game__column">
+        <div className="game__options" onClick={openOptions} />
+        <div className="select__info game__info" onClick={openInfo} />
+        <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} handleScreen={handleScreen} />
+        <PlayersContainer />
+        <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
+        <div className={transition ? 'game__transition move-right' : 'game__transition'}>
+          <TransitionBackground />
+        </div>
+      </div>
+      <div className="game__column game__column--desktop">
+        <h3>QUESTION</h3>
       </div>
     </div>
   )
