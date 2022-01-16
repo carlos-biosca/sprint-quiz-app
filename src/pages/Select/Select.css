@@ -12,7 +12,7 @@
   transition: transform 0.35s linear;
   background-color: var(--dark-white);
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 30;
 }
 

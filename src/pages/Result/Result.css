@@ -19,8 +19,9 @@
   font-weight: 700;
   line-height: 101.64px;
   color: var(--black);
-  text-shadow: -5px -5px 0 var(--purple), 5px -5px 0 var(--purple),
-    -5px 5px 0 var(--purple), 5px 5px 0 var(--purple);
+  text-shadow: -3px -3px 0 var(--purple), 3px -3px 0 var(--purple),
+    -3px 3px 0 var(--purple), 3px 3px 0 var(--purple);
+  z-index: 10;
 }
 
 .result__name {
@@ -40,6 +41,7 @@
 .result__options {
   position: absolute;
   bottom: 10px;
+  width: 90%;
   z-index: 10;
   animation: optionsMove 4s ease;
 }
@@ -58,10 +60,25 @@
   .result__title {
     font-size: 110px;
     margin-bottom: 10%;
+    text-shadow: -5px -5px 0 var(--purple), 5px -5px 0 var(--purple),
+      -5px 5px 0 var(--purple), 5px 5px 0 var(--purple);
+    z-index: 10;
   }
 
   .result__options {
     width: 65%;
     bottom: 10%;
+  }
+}
+
+/* Desktop  */
+@media only screen and (min-width: 1440px) {
+  .result__title {
+    font-size: 150px;
+    margin-bottom: 10%;
+  }
+
+  .result__options {
+    width: 500px;
   }
 }

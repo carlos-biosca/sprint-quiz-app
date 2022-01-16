@@ -29,11 +29,6 @@
 
 /* Desktop */
 @media only screen and (min-width: 1440px) {
-  .button {
-    transition: opacity 0.35s ease;
-    transition-delay: 0.7s;
-  }
-
   .button:hover {
     background-color: var(--dark-grey);
     color: var(--dark-white);

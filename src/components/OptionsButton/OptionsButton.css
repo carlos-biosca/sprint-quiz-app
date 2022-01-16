@@ -62,4 +62,9 @@
   .modal-options__button {
     font-size: 30px;
   }
+
+  .modal-options__button:active,
+  .modal-options__button:hover {
+    border: 3px solid var(--black);
+  }
 }

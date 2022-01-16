@@ -169,7 +169,7 @@
   }
 
   .wheel__score {
-    clip-path: polygon(99% 0%, 57% 80%, 43% 80%, -6% 0%);
+    clip-path: polygon(96% 0%, 57% 75%, 43% 75%, -1% 0%);
   }
 
   .wheel__wrap {
@@ -179,7 +179,7 @@
 
   .wheel__wrap::before,
   .wheel__wrap::after {
-    top: 238px;
+    top: 223px;
   }
 
   .wheel__wrap::before {
@@ -202,5 +202,14 @@
 @media only screen and (min-width: 1440px) {
   .wheel__container {
     cursor: pointer;
+  }
+
+  .wheel__center {
+    width: 80px;
+    height: 80px;
+  }
+
+  .wheel__container:hover .wheel__center {
+    background-color: var(--soft-purple);
   }
 }

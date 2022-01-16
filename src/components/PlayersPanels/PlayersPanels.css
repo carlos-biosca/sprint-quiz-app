@@ -121,4 +121,8 @@
   .game__piece img {
     width: 60px;
   }
+
+  .game__final-question {
+    top: calc(50% - 82px);
+  }
 }
