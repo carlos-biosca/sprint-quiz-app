@@ -15,7 +15,7 @@
   background-color: var(--dark-grey);
   color: var(--dark-white);
   font-size: 1.2rem;
-  line-height: 19px;
+  line-height: 25px;
   overflow: hidden;
   transition: color, background-color;
   transition-delay: 0.5s;

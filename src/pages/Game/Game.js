@@ -76,12 +76,12 @@ export default function Game ({ openOptions, openInfo, handleGameIsOver }) {
         <SpinWheel setScoreIsUpdated={setScoreIsUpdated} scoreIsUpdated={scoreIsUpdated} handleScreen={handleScreen} />
         <PlayersContainer />
         <Question move={handleScreen} screen={screen} handleGameIsOver={handleGameIsOver} />
-        <div className={transition ? 'game__transition move-right' : 'game__transition'}>
-          <TransitionBackground />
-        </div>
       </div>
       <div className="game__column game__column--desktop">
         <h3>QUESTION</h3>
+      </div>
+      <div className={transition ? 'game__transition move-right' : 'game__transition'}>
+        <TransitionBackground />
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { useRef } from 'react/cjs/react.development';
+import { useRef } from 'react';
 
 import { useGame } from '../../contexts/gameContext';
 import { useQuestion } from '../../contexts/questionContext';
@@ -53,3 +53,4 @@ export default function SpinWheel ({ setScoreIsUpdated, scoreIsUpdated, handleSc
     </div>
   )
 }
+
