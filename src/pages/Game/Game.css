@@ -25,6 +25,7 @@
   right: 25px;
   border: 2px solid var(--black);
   animation: animatedBlink 0.7s ease 6 3.5s;
+  z-index: 20;
 }
 
 .game__transition {

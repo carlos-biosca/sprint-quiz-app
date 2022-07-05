@@ -34,7 +34,6 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: 425px;
   font-family: "Roboto", sans-serif;
 }
 
@@ -60,12 +59,6 @@ ol {
   margin-bottom: 0;
 }
 
-/* Tablet  */
-@media only screen and (min-width: 768px) {
-  body {
-    max-width: 1024px;
-  }
-}
 
 /* Desktop */
 @media only screen and (min-width: 1440px) {
